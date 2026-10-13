@@ -117,13 +117,13 @@ export function Waveform({
 
       {/* y axis */}
       <line x1={padL} y1={padT} x2={padL} y2={padT + height} stroke={INK} strokeWidth={0.8} />
-      <text x={padL - 4} y={yOf(peak) + 3.5} textAnchor="end" fontSize={8} fontFamily="monospace" fill={INK}>
+      <text x={padL - 4} y={yOf(peak) + 3.5} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK}>
         {peak === 1 ? '+1' : `+${peak}`}
       </text>
-      <text x={padL - 4} y={mid + 3.5} textAnchor="end" fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={padL - 4} y={mid + 3.5} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         0
       </text>
-      <text x={padL - 4} y={yOf(-peak) + 3.5} textAnchor="end" fontSize={8} fontFamily="monospace" fill={INK}>
+      <text x={padL - 4} y={yOf(-peak) + 3.5} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK}>
         {peak === 1 ? '−1' : `−${peak}`}
       </text>
 
@@ -151,12 +151,12 @@ export function Waveform({
       ) : null}
 
       {/* x axis label */}
-      <text x={padL + plotW} y={h - 5} textAnchor="end" fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={padL + plotW} y={h - 5} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         {n} {xUnit}
         {n === 1 ? '' : 's'} →
       </text>
       {samplesPerBit && samplesPerBit < n ? (
-        <text x={padL} y={h - 5} fontSize={8} fontFamily="monospace" fill={GREY}>
+        <text x={padL} y={h - 5} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
           Tb = {samplesPerBit} Tc
         </text>
       ) : null}
@@ -219,13 +219,13 @@ export function StemPlot({
       {/* y axis */}
       <line x1={padL} y1={padT} x2={padL} y2={padT + height} stroke={INK} strokeWidth={0.8} />
 
-      <text x={padL - 5} y={yOf(peak) + 3.5} textAnchor="end" fontSize={8} fontFamily="monospace" fill={INK}>
+      <text x={padL - 5} y={yOf(peak) + 3.5} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK}>
         +{peak}
       </text>
-      <text x={padL - 5} y={mid + 3.5} textAnchor="end" fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={padL - 5} y={mid + 3.5} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         0
       </text>
-      <text x={padL - 5} y={yOf(-peak) + 3.5} textAnchor="end" fontSize={8} fontFamily="monospace" fill={INK}>
+      <text x={padL - 5} y={yOf(-peak) + 3.5} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK}>
         −{peak}
       </text>
 
@@ -259,24 +259,24 @@ export function StemPlot({
           x={padL + (maxIndex + 0.5) * dx + 6}
           y={yOf(values[maxIndex]) + 3}
           fontSize={8}
-          fontFamily="monospace"
+          fontFamily="'Source Sans 3', sans-serif"
           fill={BRICK}
         >
           {thresholdLabel}
         </text>
       ) : null}
 
-      <text x={padL} y={h - 6} fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={padL} y={h - 6} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         {xLabel} 0
       </text>
-      <text x={padL + plotW} y={h - 6} textAnchor="end" fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={padL + plotW} y={h - 6} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         {n - 1} →
       </text>
       <text
         x={10}
         y={mid}
         fontSize={8}
-        fontFamily="monospace"
+        fontFamily="'Source Sans 3', sans-serif"
         fill={GREY}
         transform={`rotate(-90 10 ${mid})`}
         textAnchor="middle"
@@ -360,10 +360,10 @@ export function OrthogonalityStrip({
       aria-label={`Inner product of W${selfIndex} against all ${n} Walsh functions`}>
       <line x1={padL} y1={base} x2={padL + plotW} y2={base} stroke={INK} strokeWidth={0.8} />
       <line x1={padL} y1={padT} x2={padL} y2={base} stroke={INK} strokeWidth={0.8} />
-      <text x={padL - 4} y={padT + 4} textAnchor="end" fontSize={8} fontFamily="monospace" fill={INK}>
+      <text x={padL - 4} y={padT + 4} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK}>
         {peak}
       </text>
-      <text x={padL - 4} y={base + 3} textAnchor="end" fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={padL - 4} y={base + 3} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         0
       </text>
 
@@ -389,10 +389,10 @@ export function OrthogonalityStrip({
         );
       })}
 
-      <text x={padL} y={h - 5} fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={padL} y={h - 5} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         W0
       </text>
-      <text x={padL + plotW} y={h - 5} textAnchor="end" fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={padL + plotW} y={h - 5} textAnchor="end" fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         W{n - 1} · |inner product| →
       </text>
     </svg>

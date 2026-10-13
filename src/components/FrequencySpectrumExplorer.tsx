@@ -125,17 +125,17 @@ export function FrequencySpectrumExplorer() {
             stroke={BRICK}
             strokeWidth={1}
           />
-          <text x={xOf(FORWARD_BAND.lowMHz) + 6} y={fwdY + 15} fontSize={9} fontFamily="monospace" fill={BRICK}>
+          <text x={xOf(FORWARD_BAND.lowMHz) + 6} y={fwdY + 15} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={BRICK}>
             FORWARD LINK · {FORWARD_BAND.short}
           </text>
-          <text x={xOf(FORWARD_BAND.lowMHz) + 6} y={fwdY + 28} fontSize={8.5} fontFamily="monospace" fill={INK}>
+          <text x={xOf(FORWARD_BAND.lowMHz) + 6} y={fwdY + 28} fontSize={8.5} fontFamily="'Source Sans 3', sans-serif" fill={INK}>
             {FORWARD_BAND.lowMHz}–{FORWARD_BAND.highMHz} MHz · {RF.bandSpanMHz} MHz
           </text>
           {/* tick marks at the band edges, so the limits are readable off the axis */}
           {[FORWARD_BAND.lowMHz, FORWARD_BAND.highMHz].map((f) => (
             <g key={`fwd-${f}`}>
               <line x1={xOf(f)} y1={fwdY} x2={xOf(f)} y2={axisY} stroke={BRICK} strokeWidth={0.5} strokeDasharray="2 3" />
-              <text x={xOf(f)} y={fwdY - 5} fontSize={8} fontFamily="monospace" fill={BRICK} textAnchor="middle">
+              <text x={xOf(f)} y={fwdY - 5} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={BRICK} textAnchor="middle">
                 {f}
               </text>
             </g>
@@ -152,16 +152,16 @@ export function FrequencySpectrumExplorer() {
             stroke={OLIVE}
             strokeWidth={1}
           />
-          <text x={xOf(REVERSE_BAND.lowMHz) + 6} y={revY + 15} fontSize={9} fontFamily="monospace" fill={OLIVE}>
+          <text x={xOf(REVERSE_BAND.lowMHz) + 6} y={revY + 15} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={OLIVE}>
             REVERSE LINK · {REVERSE_BAND.short}
           </text>
-          <text x={xOf(REVERSE_BAND.lowMHz) + 6} y={revY + 28} fontSize={8.5} fontFamily="monospace" fill={INK}>
+          <text x={xOf(REVERSE_BAND.lowMHz) + 6} y={revY + 28} fontSize={8.5} fontFamily="'Source Sans 3', sans-serif" fill={INK}>
             {REVERSE_BAND.lowMHz}–{REVERSE_BAND.highMHz} MHz · {RF.bandSpanMHz} MHz
           </text>
           {[REVERSE_BAND.lowMHz, REVERSE_BAND.highMHz].map((f) => (
             <g key={`rev-${f}`}>
               <line x1={xOf(f)} y1={revY + bandH} x2={xOf(f)} y2={axisY} stroke={OLIVE} strokeWidth={0.5} strokeDasharray="2 3" />
-              <text x={xOf(f)} y={revY - 5} fontSize={8} fontFamily="monospace" fill={OLIVE} textAnchor="middle">
+              <text x={xOf(f)} y={revY - 5} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={OLIVE} textAnchor="middle">
                 {f}
               </text>
             </g>
@@ -190,7 +190,7 @@ export function FrequencySpectrumExplorer() {
               x={(xOf(REVERSE_BAND.lowMHz) + xOf(FORWARD_BAND.lowMHz)) / 2}
               y={revY + bandH + 15.5}
               fontSize={8.5}
-              fontFamily="monospace"
+              fontFamily="'Source Sans 3', sans-serif"
               fill={INK}
               textAnchor="middle"
             >
@@ -205,7 +205,7 @@ export function FrequencySpectrumExplorer() {
             x={xOf(marker)}
             y={28}
             fontSize={9}
-            fontFamily="monospace"
+            fontFamily="'Source Sans 3', sans-serif"
             fill={BRICK}
             textAnchor={marker > 880 ? 'end' : 'start'}
             dx={marker > 880 ? -5 : 5}
@@ -236,7 +236,7 @@ export function FrequencySpectrumExplorer() {
                 x={xOf(pair)}
                 y={(band?.id === 'reverse' ? fwdY + bandH / 2 : revY + bandH / 2) - 7}
                 fontSize={8}
-                fontFamily="monospace"
+                fontFamily="'Source Sans 3', sans-serif"
                 fill={INK}
                 textAnchor="middle"
               >
@@ -253,12 +253,12 @@ export function FrequencySpectrumExplorer() {
           {ticks.map((f) => (
             <g key={f}>
               <line x1={xOf(f)} y1={axisY} x2={xOf(f)} y2={axisY + 6} stroke={INK} strokeWidth={0.9} />
-              <text x={xOf(f)} y={axisY + 18} fontSize={8.5} fontFamily="monospace" fill={INK} textAnchor="middle">
+              <text x={xOf(f)} y={axisY + 18} fontSize={8.5} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
                 {f}
               </text>
             </g>
           ))}
-          <text x={W - padR} y={axisY + 31} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="end">
+          <text x={W - padR} y={axisY + 31} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="end">
             frequency / MHz →
           </text>
         </PlotFrame>
@@ -420,17 +420,17 @@ function ChannelZoom({ centre, inBand }: { centre: number; inBand: boolean }) {
         <line x1={xOf(centre - bw / 2)} y1={axisY - 68} x2={xOf(centre + bw / 2)} y2={axisY - 68} stroke={INK} strokeWidth={0.9} />
         <line x1={xOf(centre - bw / 2)} y1={axisY - 72} x2={xOf(centre - bw / 2)} y2={axisY - 64} stroke={INK} strokeWidth={0.9} />
         <line x1={xOf(centre + bw / 2)} y1={axisY - 72} x2={xOf(centre + bw / 2)} y2={axisY - 64} stroke={INK} strokeWidth={0.9} />
-        <text x={xOf(centre)} y={axisY - 74} fontSize={9} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={xOf(centre)} y={axisY - 74} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           {bw} MHz nominal
         </text>
 
         {/* centre frequency */}
         <line x1={xOf(centre)} y1={axisY - 56} x2={xOf(centre)} y2={axisY + 6} stroke={INK} strokeWidth={0.8} strokeDasharray="2 2" />
-        <text x={xOf(centre)} y={axisY - 30} fontSize={8.5} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={xOf(centre)} y={axisY - 30} fontSize={8.5} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           fc
         </text>
 
-        <text x={padL + 4} y={axisY - 48} fontSize={8} fontFamily="monospace" fill={GREY}>
+        <text x={padL + 4} y={axisY - 48} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
           PSD (schematic)
         </text>
 
@@ -439,12 +439,12 @@ function ChannelZoom({ centre, inBand }: { centre: number; inBand: boolean }) {
         {ticks.map((f) => (
           <g key={f}>
             <line x1={xOf(f)} y1={axisY} x2={xOf(f)} y2={axisY + 5} stroke={INK} strokeWidth={0.8} />
-            <text x={xOf(f)} y={axisY + 17} fontSize={8} fontFamily="monospace" fill={INK} textAnchor="middle">
+            <text x={xOf(f)} y={axisY + 17} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
               {f.toFixed(2)}
             </text>
           </g>
         ))}
-        <text x={W - padR} y={axisY + 29} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="end">
+        <text x={W - padR} y={axisY + 29} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="end">
           frequency / MHz →
         </text>
       </PlotFrame>

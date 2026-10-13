@@ -322,14 +322,14 @@ function TraceSchematic({ link, activeStage }: { link: LinkDirection; activeStag
           stroke={highlight.tx ? BRICK : INK}
           strokeWidth={1.2}
         />
-        <text x={leftX + boxW / 2} y={midY - 32} fontSize={8} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={leftX + boxW / 2} y={midY - 32} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           {leftLabel}
         </text>
         <text
           x={leftX + boxW / 2}
           y={midY + 3}
           fontSize={7.5}
-          fontFamily="monospace"
+          fontFamily="'Source Sans 3', sans-serif"
           fill={highlight.tx ? '#f4f0e7' : GREY}
           textAnchor="middle"
         >
@@ -339,7 +339,7 @@ function TraceSchematic({ link, activeStage }: { link: LinkDirection; activeStag
           x={leftX + boxW / 2}
           y={midY + 14}
           fontSize={7.5}
-          fontFamily="monospace"
+          fontFamily="'Source Sans 3', sans-serif"
           fill={highlight.tx ? '#f4f0e7' : GREY}
           textAnchor="middle"
         >
@@ -350,7 +350,7 @@ function TraceSchematic({ link, activeStage }: { link: LinkDirection; activeStag
         {!isForward ? (
           <>
             <rect x={leftX + 10} y={midY + 36} width={boxW - 20} height={16} fill="none" stroke={GREY} strokeWidth={0.7} strokeDasharray="3 2" />
-            <text x={leftX + boxW / 2} y={midY + 47} fontSize={7} fontFamily="monospace" fill={GREY} textAnchor="middle">
+            <text x={leftX + boxW / 2} y={midY + 47} fontSize={7} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="middle">
               other mobiles
             </text>
             <line x1={leftX + boxW - 10} y1={midY + 44} x2={rightX} y2={midY + 20} stroke={GREY} strokeWidth={0.7} strokeDasharray="3 2" />
@@ -371,7 +371,7 @@ function TraceSchematic({ link, activeStage }: { link: LinkDirection; activeStag
           x={(leftX + boxW + rightX) / 2}
           y={midY - 10}
           fontSize={8}
-          fontFamily="monospace"
+          fontFamily="'Source Sans 3', sans-serif"
           fill={highlight.air ? BRICK : INK}
           textAnchor="middle"
         >
@@ -381,7 +381,7 @@ function TraceSchematic({ link, activeStage }: { link: LinkDirection; activeStag
           x={(leftX + boxW + rightX) / 2}
           y={midY + 16}
           fontSize={8}
-          fontFamily="monospace"
+          fontFamily="'Source Sans 3', sans-serif"
           fill={highlight.band ? BRICK : GREY}
           textAnchor="middle"
         >
@@ -398,14 +398,14 @@ function TraceSchematic({ link, activeStage }: { link: LinkDirection; activeStag
           stroke={highlight.rx ? BRICK : INK}
           strokeWidth={1.2}
         />
-        <text x={rightX + boxW / 2} y={midY - 32} fontSize={8} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={rightX + boxW / 2} y={midY - 32} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           {rightLabel}
         </text>
         <text
           x={rightX + boxW / 2}
           y={midY + 3}
           fontSize={7.5}
-          fontFamily="monospace"
+          fontFamily="'Source Sans 3', sans-serif"
           fill={highlight.rx ? '#f4f0e7' : GREY}
           textAnchor="middle"
         >
@@ -415,7 +415,7 @@ function TraceSchematic({ link, activeStage }: { link: LinkDirection; activeStag
           x={rightX + boxW / 2}
           y={midY + 14}
           fontSize={7.5}
-          fontFamily="monospace"
+          fontFamily="'Source Sans 3', sans-serif"
           fill={highlight.rx ? '#f4f0e7' : GREY}
           textAnchor="middle"
         >
@@ -428,7 +428,7 @@ function TraceSchematic({ link, activeStage }: { link: LinkDirection; activeStag
           points={`${leftX + boxW},${H - 18} ${leftX + boxW + 8},${H - 22} ${leftX + boxW + 8},${H - 14}`}
           fill={OLIVE}
         />
-        <text x={(leftX + boxW + rightX) / 2} y={H - 22} fontSize={7.5} fontFamily="monospace" fill={OLIVE} textAnchor="middle">
+        <text x={(leftX + boxW + rightX) / 2} y={H - 22} fontSize={7.5} fontFamily="'Source Sans 3', sans-serif" fill={OLIVE} textAnchor="middle">
           {isForward ? 'reverse link carries this user’s data back' : 'power-control bit · 1.25 ms · ±1 dB'}
         </text>
       </PlotFrame>

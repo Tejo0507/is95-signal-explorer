@@ -244,7 +244,7 @@ function ThreeUsersFigure() {
           const y = 34 + i * rowH;
           return (
             <g key={u.label}>
-              <text x={8} y={y + 3} fontSize={8} fontFamily="monospace" fill={u.colour}>
+              <text x={8} y={y + 3} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={u.colour}>
                 {u.label}
               </text>
               <line x1={padL} y1={y} x2={padL + plotW} y2={y} stroke={INK} strokeWidth={0.4} opacity={0.4} />
@@ -255,12 +255,12 @@ function ThreeUsersFigure() {
 
         {/* summing node */}
         <circle cx={padL + plotW / 2} cy={34 + 2.55 * rowH} r={11} fill="none" stroke={INK} strokeWidth={1.1} />
-        <text x={padL + plotW / 2} y={34 + 2.55 * rowH + 4} fontSize={12} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={padL + plotW / 2} y={34 + 2.55 * rowH + 4} fontSize={12} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           +
         </text>
 
         {/* the sum */}
-        <text x={8} y={34 + 3.4 * rowH + 3} fontSize={8} fontFamily="monospace" fill={INK}>
+        <text x={8} y={34 + 3.4 * rowH + 3} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={INK}>
           r(t)
         </text>
         <line
@@ -273,16 +273,16 @@ function ThreeUsersFigure() {
         />
         <path d={step(sum, 34 + 3.4 * rowH, 42)} fill="none" stroke={INK} strokeWidth={1.8} />
 
-        <text x={8} y={H - 36} fontSize={8} fontFamily="monospace" fill={GREY}>
+        <text x={8} y={H - 36} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
           r(t) = s₁(t) + s₂(t) + s₃(t) + n(t)
         </text>
-        <text x={8} y={H - 24} fontSize={8} fontFamily="monospace" fill={GREY}>
+        <text x={8} y={H - 24} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
           No filter splits them, they share the band.
         </text>
-        <text x={8} y={H - 12} fontSize={8} fontFamily="monospace" fill={GREY}>
+        <text x={8} y={H - 12} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
           No time gate splits them, they overlap in time.
         </text>
-        <text x={padL + plotW} y={H - 12} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="end">
+        <text x={padL + plotW} y={H - 12} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="end">
           {LEN} chips →
         </text>
       </PlotFrame>

@@ -226,7 +226,7 @@ function DurationBar({ factor, rate }: { factor: number; rate: number }) {
       <PlotFrame width={W} height={H} label="Bit interval divided into chip intervals">
         {/* Tb */}
         <rect x={padL} y={18} width={plotW} height={20} fill={BRICK} opacity={0.14} stroke={BRICK} strokeWidth={1} />
-        <text x={padL + plotW / 2} y={13} fontSize={9} fontFamily="monospace" fill={BRICK} textAnchor="middle">
+        <text x={padL + plotW / 2} y={13} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={BRICK} textAnchor="middle">
           Tb, one information bit at {rate.toLocaleString('en-US')} b/s
         </text>
 
@@ -243,11 +243,11 @@ function DurationBar({ factor, rate }: { factor: number; rate: number }) {
             strokeWidth={chipW > 6 ? 0.8 : 0.4}
           />
         ))}
-        <text x={padL} y={82} fontSize={8.5} fontFamily="monospace" fill={OLIVE}>
+        <text x={padL} y={82} fontSize={8.5} fontFamily="'Source Sans 3', sans-serif" fill={OLIVE}>
           Tc × {Math.round(factor)} at 1.2288 Mchip/s
           {truncated ? `  (first ${drawn} shown)` : ''}
         </text>
-        <text x={padL + plotW} y={82} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="end">
+        <text x={padL + plotW} y={82} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="end">
           time →
         </text>
       </PlotFrame>

@@ -286,7 +286,7 @@ function ForwardArchitecture({ selectedKind }: { selectedKind: ForwardChannelKin
       <PlotFrame width={W} height={H} label="Forward link architecture">
         {/* base station */}
         <rect x={bsX} y={30} width={bsW} height={rowY(3) + 14 - 30} fill="none" stroke={INK} strokeWidth={1.2} />
-        <text x={bsX + bsW / 2} y={24} fontSize={9} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={bsX + bsW / 2} y={24} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           BASE STATION
         </text>
 
@@ -297,14 +297,14 @@ function ForwardArchitecture({ selectedKind }: { selectedKind: ForwardChannelKin
           return (
             <g key={row.kind}>
               {/* channel source */}
-              <text x={bsX + 10} y={y + 4} fontSize={9} fontFamily="monospace" fill={active ? BRICK : INK}>
+              <text x={bsX + 10} y={y + 4} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={active ? BRICK : INK}>
                 {row.label}
               </text>
               {/* path to Walsh cover */}
               <line x1={bsX + bsW} y1={y} x2={260} y2={y} stroke={colour} strokeWidth={active ? 2 : 1} />
               {/* Walsh multiplier */}
               <rect x={260} y={y - 11} width={96} height={22} fill={active ? BRICK : 'none'} stroke={colour} strokeWidth={active ? 1.2 : 1} />
-              <text x={308} y={y + 4} fontSize={8.5} fontFamily="monospace" fill={active ? '#f4f0e7' : INK} textAnchor="middle">
+              <text x={308} y={y + 4} fontSize={8.5} fontFamily="'Source Sans 3', sans-serif" fill={active ? '#f4f0e7' : INK} textAnchor="middle">
                 × {row.code}
               </text>
               {/* path to summer */}
@@ -324,7 +324,7 @@ function ForwardArchitecture({ selectedKind }: { selectedKind: ForwardChannelKin
         {/* summing node */}
         <line x1={sumX - 14} y1={rowY(0)} x2={sumX - 14} y2={rowY(3)} stroke={GREY} strokeWidth={1} />
         <circle cx={sumX} cy={rowY(1.5)} r={13} fill="none" stroke={INK} strokeWidth={1.2} />
-        <text x={sumX} y={rowY(1.5) + 5} fontSize={13} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={sumX} y={rowY(1.5) + 5} fontSize={13} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           Σ
         </text>
         <line x1={sumX - 14} y1={rowY(1.5)} x2={sumX - 13} y2={rowY(1.5)} stroke={INK} strokeWidth={1.2} />
@@ -335,26 +335,26 @@ function ForwardArchitecture({ selectedKind }: { selectedKind: ForwardChannelKin
           points={`${msX - 10},${rowY(1.5)} ${msX - 18},${rowY(1.5) - 4} ${msX - 18},${rowY(1.5) + 4}`}
           fill={INK}
         />
-        <text x={(sumX + msX) / 2} y={rowY(1.5) - 10} fontSize={8.5} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={(sumX + msX) / 2} y={rowY(1.5) - 10} fontSize={8.5} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           one 1.25 MHz carrier
         </text>
-        <text x={(sumX + msX) / 2} y={rowY(1.5) + 18} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="middle">
+        <text x={(sumX + msX) / 2} y={rowY(1.5) + 18} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="middle">
           1.2288 Mchip/s · QPSK
         </text>
 
         {/* mobile */}
         <rect x={msX} y={rowY(1.5) - 26} width={125} height={52} fill="none" stroke={INK} strokeWidth={1.2} />
-        <text x={msX + 62} y={rowY(1.5) - 6} fontSize={9} fontFamily="monospace" fill={INK} textAnchor="middle">
+        <text x={msX + 62} y={rowY(1.5) - 6} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
           MOBILE
         </text>
-        <text x={msX + 62} y={rowY(1.5) + 8} fontSize={8} fontFamily="monospace" fill={BRICK} textAnchor="middle">
+        <text x={msX + 62} y={rowY(1.5) + 8} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={BRICK} textAnchor="middle">
           correlate for
         </text>
-        <text x={msX + 62} y={rowY(1.5) + 19} fontSize={8} fontFamily="monospace" fill={BRICK} textAnchor="middle">
+        <text x={msX + 62} y={rowY(1.5) + 19} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={BRICK} textAnchor="middle">
           its own Walsh code
         </text>
 
-        <text x={30} y={H - 8} fontSize={8} fontFamily="monospace" fill={GREY}>
+        <text x={30} y={H - 8} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
           Synchronous: one transmitter, one clock → orthogonality preserved within the cell
         </text>
       </PlotFrame>
@@ -393,18 +393,18 @@ function ReverseArchitecture({
         <rect x={msX} y={y - 24} width={bsX + bsW - msX} height={48} fill="transparent" />
         <line x1={msX + msW} y1={y} x2={360} y2={y} stroke={colour} strokeWidth={active ? 2 : 1} />
         <rect x={360} y={y - 13} width={118} height={26} fill={active ? BRICK : 'none'} stroke={colour} strokeWidth={active ? 1.2 : 1} />
-        <text x={419} y={y - 1} fontSize={8} fontFamily="monospace" fill={active ? '#f4f0e7' : INK} textAnchor="middle">
+        <text x={419} y={y - 1} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={active ? '#f4f0e7' : INK} textAnchor="middle">
           long code
         </text>
-        <text x={419} y={y + 9} fontSize={7.5} fontFamily="monospace" fill={active ? '#f4f0e7' : GREY} textAnchor="middle">
+        <text x={419} y={y + 9} fontSize={7.5} fontFamily="'Source Sans 3', sans-serif" fill={active ? '#f4f0e7' : GREY} textAnchor="middle">
           user mask
         </text>
         <line x1={478} y1={y} x2={bsX - 10} y2={y} stroke={colour} strokeWidth={active ? 2 : 1} />
         <polygon points={`${bsX - 10},${y} ${bsX - 18},${y - 4} ${bsX - 18},${y + 4}`} fill={colour} />
-        <text x={msX + msW + 8} y={y - 8} fontSize={8.5} fontFamily="monospace" fill={active ? BRICK : INK}>
+        <text x={msX + msW + 8} y={y - 8} fontSize={8.5} fontFamily="'Source Sans 3', sans-serif" fill={active ? BRICK : INK}>
           {label}
         </text>
-        <text x={msX + msW + 8} y={y + 16} fontSize={7.5} fontFamily="monospace" fill={GREY}>
+        <text x={msX + msW + 8} y={y + 16} fontSize={7.5} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
           {sub}
         </text>
       </g>
@@ -415,26 +415,26 @@ function ReverseArchitecture({
     <PlotFrame width={W} height={H} label="Reverse link architecture">
       {/* mobile */}
       <rect x={msX} y={40} width={msW} height={120} fill="none" stroke={INK} strokeWidth={1.2} />
-      <text x={msX + msW / 2} y={34} fontSize={9} fontFamily="monospace" fill={INK} textAnchor="middle">
+      <text x={msX + msW / 2} y={34} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
         MOBILE STATION
       </text>
-      <text x={msX + msW / 2} y={88} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="middle">
+      <text x={msX + msW / 2} y={88} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="middle">
         own clock
       </text>
-      <text x={msX + msW / 2} y={100} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="middle">
+      <text x={msX + msW / 2} y={100} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="middle">
         own path
       </text>
-      <text x={msX + msW / 2} y={112} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="middle">
+      <text x={msX + msW / 2} y={112} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="middle">
         own long code
       </text>
 
       {/* other mobiles, to make the asynchrony visible */}
       <rect x={msX + 12} y={176} width={msW - 24} height={20} fill="none" stroke={GREY} strokeWidth={0.8} strokeDasharray="3 2" />
-      <text x={msX + msW / 2} y={190} fontSize={7.5} fontFamily="monospace" fill={GREY} textAnchor="middle">
+      <text x={msX + msW / 2} y={190} fontSize={7.5} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="middle">
         other mobiles
       </text>
       <line x1={msX + msW} y1={186} x2={bsX - 10} y2={178} stroke={GREY} strokeWidth={0.8} strokeDasharray="3 2" />
-      <text x={400} y={176} fontSize={7.5} fontFamily="monospace" fill={OLIVE} textAnchor="middle">
+      <text x={400} y={176} fontSize={7.5} fontFamily="'Source Sans 3', sans-serif" fill={OLIVE} textAnchor="middle">
         quasi-orthogonal on arrival → interference
       </text>
 
@@ -443,16 +443,16 @@ function ReverseArchitecture({
 
       {/* base station */}
       <rect x={bsX} y={40} width={bsW} height={120} fill="none" stroke={INK} strokeWidth={1.2} />
-      <text x={bsX + bsW / 2} y={34} fontSize={9} fontFamily="monospace" fill={INK} textAnchor="middle">
+      <text x={bsX + bsW / 2} y={34} fontSize={9} fontFamily="'Source Sans 3', sans-serif" fill={INK} textAnchor="middle">
         BASE STATION
       </text>
-      <text x={bsX + bsW / 2} y={96} fontSize={8} fontFamily="monospace" fill={BRICK} textAnchor="middle">
+      <text x={bsX + bsW / 2} y={96} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={BRICK} textAnchor="middle">
         correlate for
       </text>
-      <text x={bsX + bsW / 2} y={108} fontSize={8} fontFamily="monospace" fill={BRICK} textAnchor="middle">
+      <text x={bsX + bsW / 2} y={108} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={BRICK} textAnchor="middle">
         each long code
       </text>
-      <text x={bsX + bsW / 2} y={124} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="middle">
+      <text x={bsX + bsW / 2} y={124} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY} textAnchor="middle">
         measure power
       </text>
 
@@ -460,11 +460,11 @@ function ReverseArchitecture({
       <line x1={bsX} y1={pcY} x2={msX + msW + 10} y2={pcY} stroke={OLIVE} strokeWidth={1.4} strokeDasharray="5 3" />
       <polygon points={`${msX + msW + 10},${pcY} ${msX + msW + 18},${pcY - 4} ${msX + msW + 18},${pcY + 4}`} fill={OLIVE} />
       <line x1={bsX} y1={160} x2={bsX} y2={pcY} stroke={OLIVE} strokeWidth={1.4} strokeDasharray="5 3" />
-      <text x={(msX + bsX) / 2} y={pcY - 7} fontSize={8} fontFamily="monospace" fill={OLIVE} textAnchor="middle">
+      <text x={(msX + bsX) / 2} y={pcY - 7} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={OLIVE} textAnchor="middle">
         FORWARD LINK · power-control bit every 1.25 ms · ±1 dB
       </text>
 
-      <text x={msX} y={H - 6} fontSize={8} fontFamily="monospace" fill={GREY}>
+      <text x={msX} y={H - 6} fontSize={8} fontFamily="'Source Sans 3', sans-serif" fill={GREY}>
         Asynchronous: many transmitters → orthogonality not guaranteed → tight power control mandatory
       </text>
     </PlotFrame>
