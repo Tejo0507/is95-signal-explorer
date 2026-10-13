@@ -1,9 +1,9 @@
 /**
- * app.smoke.test.tsx — does the site actually run?
+ * app.smoke.test.tsx, does the site actually run?
  *
  * The maths tests in src/lib prove the numbers are right. These prove the
  * pages mount, every route renders, and the interactive controls do not throw
- * when exercised — the class of failure a type checker cannot see (an
+ * when exercised, the class of failure a type checker cannot see (an
  * out-of-range array index, a `find()` that returns undefined behind a
  * non-null assertion, an effect that loops).
  *
@@ -88,7 +88,7 @@ describe('application shell', () => {
 
 describe('every module page renders', () => {
   for (const route of ROUTES) {
-    it(`${route.num} — ${route.nav}`, () => {
+    it(`${route.num}, ${route.nav}`, () => {
       renderAt(route.hash);
 
       // Something substantial rendered, not an empty shell.

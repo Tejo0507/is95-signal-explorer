@@ -1,5 +1,5 @@
 /**
- * storage.ts — the one piece of browser state this site keeps.
+ * storage.ts, the one piece of browser state this site keeps.
  *
  * Only whether the first-run guide has been dismissed. Every access is wrapped
  * in try/catch: a private-mode browser, blocked site data or a sandboxed iframe
@@ -21,6 +21,6 @@ export function markWalkthroughSeen(): void {
   try {
     window.localStorage.setItem(WALKTHROUGH_KEY, '1');
   } catch {
-    // Storage unavailable — the guide simply shows again next visit.
+    // Storage unavailable, the guide simply shows again next visit.
   }
 }

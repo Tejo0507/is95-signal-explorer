@@ -1,5 +1,5 @@
 /**
- * ui.tsx — small presentational primitives shared by every module.
+ * ui.tsx, small presentational primitives shared by every module.
  *
  * None of these compute anything. All signal processing lives in src/lib so it
  * can be read, tested and reused without touching React.
@@ -75,7 +75,7 @@ export function Term({ k, children }: { k: string; children: ReactNode }) {
 }
 
 /* ------------------------------------------------------------------ *
- * "Why this matters" — one sentence, never a paragraph.
+ * "Why this matters", one sentence, never a paragraph.
  * ------------------------------------------------------------------ */
 
 export function Why({ children }: { children: ReactNode }) {
@@ -149,7 +149,7 @@ export function Panel({
 }
 
 /* ------------------------------------------------------------------ *
- * Readout grid — numbers with their units attached.
+ * Readout grid, numbers with their units attached.
  * ------------------------------------------------------------------ */
 
 export interface ReadoutItem {
@@ -180,7 +180,7 @@ export function Readouts({ items }: { items: ReadoutItem[] }) {
 }
 
 /* ------------------------------------------------------------------ *
- * Segmented control — used for every forward/reverse switch so the
+ * Segmented control, used for every forward/reverse switch so the
  * interaction is identical in all five modules.
  * ------------------------------------------------------------------ */
 
@@ -369,7 +369,7 @@ export function SelectField<T extends string | number>({
 }
 
 /* ------------------------------------------------------------------ *
- * Reset — every experiment on the site has one.
+ * Reset, every experiment on the site has one.
  * ------------------------------------------------------------------ */
 
 export function ResetButton({ onReset, label = 'Reset' }: { onReset: () => void; label?: string }) {

@@ -3,13 +3,13 @@
  *
  * The IS-95 logical channel architecture, in two modes.
  *
- * FORWARD — all 64 Walsh functions drawn as a labelled map. Walsh code n IS
+ * FORWARD, all 64 Walsh functions drawn as a labelled map. Walsh code n IS
  * logical channel n here, so the map is both the code allocation and the
  * channel list. Selecting a cell explains that channel and highlights its
  * assignment; the paging-channel control moves the paging/traffic boundary,
  * which is the deck's own caveat about configuration dependence made live.
  *
- * REVERSE — the access and reverse traffic channels, with an architecture
+ * REVERSE, the access and reverse traffic channels, with an architecture
  * diagram whose signal path highlights with the selection. There is no Walsh
  * map here, deliberately: on the reverse link Walsh functions are the
  * modulation, not channel identities, and mobiles are separated by long codes.
@@ -106,7 +106,7 @@ export function LogicalChannelMap() {
                     data-kind={a.kind}
                     aria-pressed={a.index === selectedIndex}
                     aria-label={`Walsh ${a.index}, ${a.label}`}
-                    title={`W${a.index} — ${a.label}`}
+                    title={`W${a.index}, ${a.label}`}
                     onClick={() => setSelectedIndex(a.index)}
                   >
                     {a.index}
@@ -123,7 +123,7 @@ export function LogicalChannelMap() {
               />
             </Figure>
 
-            <Panel title={`W${selectedIndex} — ${slot.label}`}>
+            <Panel title={`W${selectedIndex}, ${slot.label}`}>
               <div className="stack stack--tight">
                 <h3 style={{ fontSize: '1.25rem' }}>{channelType.name}</h3>
                 <p className="small muted" style={{ margin: 0 }}>
@@ -214,10 +214,10 @@ export function LogicalChannelMap() {
 
           <Readouts
             items={[
-              { label: 'Access channel rate', value: '4800', unit: 'b/s', note: 'Fixed — no variable-rate vocoder' },
+              { label: 'Access channel rate', value: '4800', unit: 'b/s', note: 'Fixed, no variable-rate vocoder' },
               { label: 'Access channels', value: 'up to 32', note: 'Per paging channel' },
               { label: 'Traffic rates', value: '9600 / 4800 / 2400 / 1200', unit: 'b/s', note: '20 ms frames' },
-              { label: 'Users separated by', value: 'Long code', emphasis: true, note: 'Period 2⁴² − 1, per-user mask — not by Walsh index' },
+              { label: 'Users separated by', value: 'Long code', emphasis: true, note: 'Period 2⁴² − 1, per-user mask, not by Walsh index' },
             ]}
           />
         </>
@@ -242,7 +242,7 @@ export function LogicalChannelMap() {
       <Why>
         {WALSH_ROLE_CONTRAST.warning} The reverse link leans on{' '}
         <Term k="long code">long-code</Term> processing for user identity and on{' '}
-        <Term k="power control">power control</Term> for survivability — neither of which the
+        <Term k="power control">power control</Term> for survivability, neither of which the
         forward link needs in the same way.
       </Why>
     </div>

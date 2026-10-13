@@ -3,7 +3,7 @@
  *
  * The 64-channel forward-link allocation map, framed physically rather than
  * logically. Module 02 asks "what is this channel for?"; this map asks "what
- * does this index DO to the signal?" — and shows the actual 64-chip sequence
+ * does this index DO to the signal?", and shows the actual 64-chip sequence
  * that covers each symbol of the selected channel.
  *
  * It exists partly to carry one specific correction: "W19 is a traffic channel"
@@ -87,7 +87,7 @@ export function WalshAllocationMap() {
                 data-kind={a.kind}
                 aria-pressed={a.index === index}
                 aria-label={`Walsh ${a.index}, ${a.label}`}
-                title={`W${a.index} — ${a.label}`}
+                title={`W${a.index}, ${a.label}`}
                 onClick={() => setIndex(a.index)}
               >
                 {a.index}
@@ -158,7 +158,7 @@ export function WalshAllocationMap() {
           </div>
         </div>
         <p className="small" style={{ margin: '1rem 0 0' }}>
-          They line up one-to-one on the forward link, which is exactly why they get conflated — and
+          They line up one-to-one on the forward link, which is exactly why they get conflated, and
           why the reverse link, where they do <em>not</em> line up, is so often misread. There, a
           Walsh index is six bits of data, not a channel name. See{' '}
           <Term k="orthogonal modulation">64-ary orthogonal modulation</Term>.

@@ -1,5 +1,5 @@
 /**
- * App.tsx — shell, hash routing, masthead and colophon.
+ * App.tsx, shell, hash routing, masthead and colophon.
  *
  * Routing is hand-rolled over `location.hash`: the built site is static files
  * only, so hash routes work on any host (GitHub Pages included) with no
@@ -99,13 +99,13 @@ export default function App() {
             <h3>Source</h3>
             <p>
               All specifications follow <strong>{SOURCE.deck}</strong>, the course deck for{' '}
-              {SOURCE.course}, {SOURCE.unit} — which in turn cites {SOURCE.reference}. Figures the
+              {SOURCE.course}, {SOURCE.unit}, which in turn cites {SOURCE.reference}. Figures the
               deck marks illustrative or schematic are reproduced as schematic here.
             </p>
             <p style={{ marginBottom: 0 }}>
               This site is a teaching instrument. It is <strong>not</strong> a standard-compliant
               IS-95 modem: the Walsh and shift-register mathematics are exact, and everything else
-              is a labelled block diagram. Where the reference supplies no value, none is invented —
+              is a labelled block diagram. Where the reference supplies no value, none is invented,
               see the full list of simplifications on the overview page.
             </p>
           </div>

@@ -1,5 +1,5 @@
 /**
- * trace.ts — the end-to-end trace that connects all four earlier modules.
+ * trace.ts, the end-to-end trace that connects all four earlier modules.
  *
  * Given a link direction, an information rate and a code configuration, this
  * builds the seven-stage path:
@@ -79,14 +79,14 @@ export function buildTrace(cfg: TraceConfig): TraceStage[] {
       num: 1,
       name: 'RF allocation',
       value: `${band.lowMHz}–${band.highMHz} MHz`,
-      summary: `${band.label} — ${band.direction}.`,
+      summary: `${band.label}, ${band.direction}.`,
       detail:
         `This signal lives in the ${band.lowMHz}–${band.highMHz} MHz band, ${RF.bandSpanMHz} MHz ` +
         `wide, carrying traffic ${band.direction}. Its carrier sits at ${centre.toFixed(2)} MHz, and ` +
-        `the paired channel in the other direction is at ${pairCentre.toFixed(2)} MHz — the fixed ` +
+        `the paired channel in the other direction is at ${pairCentre.toFixed(2)} MHz, the fixed ` +
         `${RF.duplexSeparationMHz} MHz duplex separation, which is what lets the handset transmit ` +
         `and receive simultaneously without deafening itself.`,
-      source: '01 — RF & Spreading',
+      source: '01 · RF & Spreading',
       shared: false,
     },
     {
@@ -94,15 +94,15 @@ export function buildTrace(cfg: TraceConfig): TraceStage[] {
       num: 2,
       name: 'Channel bandwidth',
       value: `${RF.nominalChannelBandwidthMHz} MHz · ${(RF.chipRateCps / 1e6).toFixed(4)} Mc/s`,
-      summary: 'Identical on both links — one of the few things that is.',
+      summary: 'Identical on both links, one of the few things that is.',
       detail:
         `The carrier occupies a nominal ${RF.nominalChannelBandwidthMHz} MHz, and chips run at ` +
         `${(RF.chipRateCps / 1e6).toFixed(4)} Mchip/s. Both figures are the same in both ` +
         `directions. Note that ${RF.bandSpanMHz} MHz of licensed band is not one carrier: at ` +
         `${RF.nominalChannelBandwidthMHz} MHz each, it nominally accommodates ` +
         `${RF.bandSpanMHz / RF.nominalChannelBandwidthMHz} of them. And the chip rate is a rate, ` +
-        `not a width — it describes what happens inside the channel.`,
-      source: '01 — RF & Spreading',
+        `not a width, it describes what happens inside the channel.`,
+      source: '01 · RF & Spreading',
       shared: true,
     },
     {
@@ -115,16 +115,16 @@ export function buildTrace(cfg: TraceConfig): TraceStage[] {
         : 'One of many mobiles sharing the carrier, identified by long code.',
       detail: isForward
         ? `Up to 64 logical channels share this carrier, and Walsh code n is channel n. W0 is the ` +
-          `pilot, W32 is sync, W1–W7 are paging, and this channel — W${cfg.walshIndex} — is one of ` +
+          `pilot, W32 is sync, W1–W7 are paging, and this channel, W${cfg.walshIndex}, is one of ` +
           `the 55 traffic channels in the reference layout. It carries user voice or data at ` +
           `${fmt(cfg.rate)} b/s in ${FRAME_MS} ms frames, plus the power-control subchannel: one ` +
           `bit every ${POWER_CONTROL.updateIntervalMs} ms commanding that mobile ±${POWER_CONTROL.stepDb} dB.`
         : `There is no Walsh index identifying this channel. Every mobile on the carrier runs the ` +
-          `same processing chain, and the base station tells them apart by their long codes — ` +
+          `same processing chain, and the base station tells them apart by their long codes, ` +
           `here, ${cfg.userLabel}'s ${CODES.longCodeRegisterStages}-bit mask. The channel carries ` +
           `voice or data at ${fmt(cfg.rate)} b/s in ${FRAME_MS} ms frames. The companion access ` +
           `channel, fixed at 4800 b/s, is what the mobile used to get here in the first place.`,
-      source: '02 — Logical Channels',
+      source: '02 · Logical Channels',
       shared: false,
     },
     {
@@ -139,17 +139,17 @@ export function buildTrace(cfg: TraceConfig): TraceStage[] {
         ? `Two codes act here, doing different jobs. W${cfg.walshIndex} CHANNELISES: each symbol ` +
           `is multiplied by its 64 chips, and because the base station transmits every channel ` +
           `from one clock they arrive chip-aligned, so their mutual correlation really is zero. ` +
-          `The long code, decimated 1:64 to 19 200 s/s, SCRAMBLES this user's symbols — privacy, ` +
+          `The long code, decimated 1:64 to 19 200 s/s, SCRAMBLES this user's symbols, privacy, ` +
           `not separation. The pilot PN sequences then spread I and Q and identify the cell by ` +
           `their offset.`
         : `The roles swap. Walsh functions here are the MODULATION: six coded symbols select ` +
-          `which one of 64 functions to transmit, so the index is data, not a channel name — and ` +
+          `which one of 64 functions to transmit, so the index is data, not a channel name, and ` +
           `the receiver can correlate against all 64 without needing a phase reference. ` +
           `Separation between mobiles comes from the long code (period ` +
           `${CODES.longCodePeriodExpression}, ${cfg.userLabel}'s mask). Those codes are only ` +
           `quasi-orthogonal on arrival because the mobiles are asynchronous, which is why power ` +
           `control is mandatory rather than merely helpful.`,
-      source: '03 — Code Explorer',
+      source: '03 · Code Explorer',
       shared: false,
     },
     {
@@ -166,13 +166,13 @@ export function buildTrace(cfg: TraceConfig): TraceStage[] {
           `constant 19 200 sym/s, a 24 × 16 block interleaver over the ${FRAME_MS} ms frame, then ` +
           `the MUX adds long-code scrambling and the power-control bit. Walsh covering turns each ` +
           `symbol into 64 chips, reaching ${(RF.chipRateCps / 1e6).toFixed(4)} Mc/s.`
-        : `Source at ${fmt(cfg.rate)} b/s, rate 1/3 coding to ${fmt(cfg.rate * 3)} sym/s — more ` +
+        : `Source at ${fmt(cfg.rate)} b/s, rate 1/3 coding to ${fmt(cfg.rate * 3)} sym/s, more ` +
           `redundancy than the forward link, because there is no pilot to detect coherently ` +
           `against. ${repeat === 1 ? 'No repetition at full rate' : `Repetition ×${repeat}`} to ` +
           `28 800 sym/s, a 32 × 18 interleaver, then 64-ary Walsh modulation at 28 800 × 64 ÷ 6 = ` +
           `307 200 c/s. The burst randomiser gates repeated copies off the air, and long-code ` +
           `spreading multiplies by four to ${(RF.chipRateCps / 1e6).toFixed(4)} Mc/s.`,
-      source: '04 — Physical Allocation',
+      source: '04 · Physical Allocation',
       shared: false,
     },
     {
@@ -190,10 +190,10 @@ export function buildTrace(cfg: TraceConfig): TraceStage[] {
           `one signal.`
         : `The chip stream is spread by the pilot PN sequences on I and Q, then offset-QPSK: the Q ` +
           `branch is delayed half a chip, ${CODES.halfChipDelayNs} ns. I and Q therefore never ` +
-          `change at the same instant, the phase never jumps 180°, and the envelope varies less — ` +
+          `change at the same instant, the phase never jumps 180°, and the envelope varies less, ` +
           `so a battery-powered amplifier can run closer to saturation. Transmit power follows the ` +
           `power-control bits arriving every ${POWER_CONTROL.updateIntervalMs} ms.`,
-      source: '04 — Physical Allocation',
+      source: '04 · Physical Allocation',
       shared: false,
     },
     {
@@ -211,11 +211,11 @@ export function buildTrace(cfg: TraceConfig): TraceStage[] {
           `deinterleaves 24 × 16, Viterbi-decodes the rate 1/2 K = 9 code, and hands ` +
           `${fmt(cfg.rate)} b/s to the vocoder. The chain is the transmitter's, undone.`
         : `The base station despreads with ${cfg.userLabel}'s long code, correlates the result ` +
-          `against all 64 Walsh functions and takes the largest — that index is the six recovered ` +
+          `against all 64 Walsh functions and takes the largest, that index is the six recovered ` +
           `symbols, and no phase reference was needed to find it. It then deinterleaves 32 × 18 ` +
           `and Viterbi-decodes the rate 1/3 code. Every other mobile on the carrier contributes ` +
           `residual interference to this decision, which is what power control exists to bound.`,
-      source: '04 — Physical Allocation',
+      source: '04 · Physical Allocation',
       shared: false,
     },
   ];
@@ -250,6 +250,6 @@ export function traceComparison(rate: TrafficRateBps): TraceComparison[] {
     { property: 'Modulation', forward: 'QPSK', reverse: 'OQPSK, Q delayed ½ Tc', shared: false },
     { property: 'Detection', forward: 'Coherent (pilot)', reverse: 'Non-coherent', shared: false },
     { property: 'Orthogonality', forward: 'Preserved in cell', reverse: 'Not guaranteed', shared: false },
-    { property: 'Power control', forward: 'Sends the command', reverse: 'Obeys it — mandatory', shared: false },
+    { property: 'Power control', forward: 'Sends the command', reverse: 'Obeys it, mandatory', shared: false },
   ];
 }

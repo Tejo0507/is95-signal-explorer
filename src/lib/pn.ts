@@ -1,5 +1,5 @@
 /**
- * pn.ts — maximal-length shift-register (m-sequence) generation.
+ * pn.ts, maximal-length shift-register (m-sequence) generation.
  *
  * HONEST SCOPE
  * The course reference names the IS-95 pilot PN sequences ("pilot PN (I)",
@@ -10,12 +10,12 @@
  * *properties* a PN sequence is chosen for can be demonstrated and verified
  * live. The UI labels these as illustrative throughout.
  *
- * ALGORITHM — Fibonacci LFSR
+ * ALGORITHM, Fibonacci LFSR
  * A register of `degree` stages holds bits s[1..degree]. On each clock the
  * output is the last stage; the new first stage is the XOR of the stages named
  * by the tap list. If the tap polynomial is primitive over GF(2), the state
  * cycles through all 2^degree − 1 non-zero states before repeating, so the
- * output has period 2^degree − 1 — a maximal-length sequence.
+ * output has period 2^degree − 1, a maximal-length sequence.
  *
  * The property that makes m-sequences useful for spreading is their periodic
  * autocorrelation: over one full period, correlating the bipolar sequence with
@@ -41,7 +41,7 @@ export interface PnPolynomial {
 
 /**
  * Primitive polynomials over GF(2), from standard tables. These are
- * mathematical facts about finite fields — they are NOT IS-95 specifications,
+ * mathematical facts about finite fields, they are NOT IS-95 specifications,
  * and nothing in the UI claims otherwise.
  */
 export const PN_POLYNOMIALS: PnPolynomial[] = [
@@ -61,7 +61,7 @@ export function polynomialForDegree(degree: number): PnPolynomial {
 export interface LfsrStep {
   /** Register contents BEFORE the clock, stage 1 first. */
   state: number[];
-  /** Bit shifted out — the sequence output for this step. */
+  /** Bit shifted out, the sequence output for this step. */
   output: number;
   /** Bit fed back into stage 1. */
   feedback: number;
@@ -120,7 +120,7 @@ export function pnPeriod(poly: PnPolynomial, seed: number[]): number[] {
 
 /**
  * Periodic autocorrelation over one full period, for shifts 0 .. period-1.
- * Computed from the generated sequence — if the polynomial were not primitive
+ * Computed from the generated sequence, if the polynomial were not primitive
  * the plot would visibly lose its single clean peak.
  */
 export function periodicAutocorrelation(sequence: number[]): number[] {
@@ -141,7 +141,7 @@ export function hasIdealAutocorrelation(sequence: number[]): boolean {
   return ac.slice(1).every((v) => v === -1);
 }
 
-/** Count of 1s and 0s — an m-sequence is balanced to within one bit. */
+/** Count of 1s and 0s, an m-sequence is balanced to within one bit. */
 export function balance(binary: number[]): { ones: number; zeros: number } {
   const ones = binary.reduce((acc, b) => acc + (b === 1 ? 1 : 0), 0);
   return { ones, zeros: binary.length - ones };

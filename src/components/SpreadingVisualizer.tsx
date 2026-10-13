@@ -146,7 +146,7 @@ export function SpreadingVisualizer() {
           label="Second user"
           value={input.interfererIndex === null ? 'none' : String(input.interfererIndex)}
           options={[
-            { value: 'none', label: 'None — clean channel' },
+            { value: 'none', label: 'None, clean channel' },
             ...Array.from({ length: CHIP_DEMO.codeLength }, (_, i) => ({
               value: String(i),
               label: `W${i}`,
@@ -258,7 +258,7 @@ export function SpreadingVisualizer() {
       />
 
       <Why>
-        The chip carries no information on its own — only the pattern does. Multiplying by the same
+        The chip carries no information on its own, only the pattern does. Multiplying by the same
         code twice makes it vanish, because every chip squares to +1. That is the entire mechanism
         by which a receiver pulls one conversation out of a sum of many, and it is why{' '}
         <Term k="correlation">correlation</Term> rather than filtering is the operation that matters
@@ -269,7 +269,7 @@ export function SpreadingVisualizer() {
         Eight chips per bit, not 128. The deck uses an eight-chip code so the whole cycle fits on
         one figure, and is explicit that 128 is the real IS-95 figure. There is also no noise,
         pulse shaping or carrier here: those would be simulation output the course reference does
-        not supply. What is exact is the arithmetic — every value plotted is integer arithmetic on
+        not supply. What is exact is the arithmetic, every value plotted is integer arithmetic on
         ±1 sequences.
       </Disclosure>
     </div>

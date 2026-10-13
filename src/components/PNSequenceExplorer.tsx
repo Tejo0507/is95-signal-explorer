@@ -121,7 +121,7 @@ export function PNSequenceExplorer() {
         items={[
           { label: 'Stages', value: degree, note: poly.label },
           { label: 'Period', value: period, unit: 'chips', note: `2^${degree} − 1`, emphasis: true },
-          { label: 'Balance', value: `${bal.ones} / ${bal.zeros}`, note: 'ones / zeros — differ by one, as an m-sequence must' },
+          { label: 'Balance', value: `${bal.ones} / ${bal.zeros}`, note: 'ones / zeros, differ by one, as an m-sequence must' },
           {
             label: 'Shift',
             value: effectiveShift,
@@ -132,13 +132,13 @@ export function PNSequenceExplorer() {
             label: 'Correlation',
             value: dot > 0 ? `+${dot}` : String(dot),
             emphasis: true,
-            note: effectiveShift === 0 ? `Peak — equals the period, ${period}` : 'Off-peak — exactly −1 for a true m-sequence',
+            note: effectiveShift === 0 ? `Peak, equals the period, ${period}` : 'Off-peak, exactly −1 for a true m-sequence',
           },
           {
             label: 'Ideal autocorrelation?',
             value: ideal ? 'Yes' : 'No',
             note: ideal
-              ? `Peak ${period} at zero shift, −1 at all ${period - 1} others — verified from the generated bits`
+              ? `Peak ${period} at zero shift, −1 at all ${period - 1} others, verified from the generated bits`
               : 'The polynomial is not primitive for this register length',
           },
         ]}
@@ -208,7 +208,7 @@ export function PNSequenceExplorer() {
         </Figure>
         <Figure
           label="Fig. 3.6b"
-          caption={<>The same sequence shifted by {effectiveShift} chips — what a late arrival looks like.</>}
+          caption={<>The same sequence shifted by {effectiveShift} chips, what a late arrival looks like.</>}
         >
           <Waveform samples={shifted} colour="var(--olive)" label="shifted PN sequence" showBitBoundaries={false} />
         </Figure>
@@ -217,7 +217,7 @@ export function PNSequenceExplorer() {
           caption={
             <>
               Chip-by-chip product. Summed over the period it gives {dot > 0 ? `+${dot}` : dot}
-              {effectiveShift === 0 ? ' — the full peak.' : ' — the flat off-peak floor.'}
+              {effectiveShift === 0 ? ', the full peak.' : ', the flat off-peak floor.'}
             </>
           }
         >
@@ -248,7 +248,7 @@ export function PNSequenceExplorer() {
         label="Fig. 3.8"
         caption={
           <>
-            Periodic autocorrelation against relative shift — the reason PN sequences are used for
+            Periodic autocorrelation against relative shift, the reason PN sequences are used for
             timing. One peak of {period} at zero shift, and exactly −1 everywhere else. Click a stem
             to set the shift.
           </>
@@ -278,7 +278,7 @@ export function PNSequenceExplorer() {
           <ul className="small" style={{ marginBottom: 0 }}>
             <li>
               <strong>Timing.</strong> The sharp autocorrelation peak is how a receiver finds chip
-              alignment at all — correlate, slide, and the peak tells you where you are.
+              alignment at all, correlate, slide, and the peak tells you where you are.
             </li>
             <li>
               <strong>Quadrature spreading.</strong> The pilot PN sequences spread the I and Q
@@ -290,7 +290,7 @@ export function PNSequenceExplorer() {
             </li>
           </ul>
         </Panel>
-        <Panel variant="sunk" title="Short PN vs. long code — not the same thing">
+        <Panel variant="sunk" title="Short PN vs. long code, not the same thing">
           <p className="small" style={{ margin: 0 }}>
             The <Term k="short pn">pilot PN sequences</Term> are short, common to the whole system,
             and distinguish <em>cells</em> by offset. The <Term k="long code">long code</Term> comes

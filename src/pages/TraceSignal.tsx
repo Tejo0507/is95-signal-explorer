@@ -1,5 +1,5 @@
 /**
- * TraceSignal.tsx — module 05, the signature experiment.
+ * TraceSignal.tsx, module 05, the signature experiment.
  */
 
 import { SignalTrace } from '../components/SignalTrace';
@@ -18,7 +18,7 @@ export function TraceSignal() {
           allocation through to the receiver’s decision.
         </p>
         <p style={{ marginBottom: 0 }}>
-          Switch direction and the whole path rebuilds — not just the labels. Eleven of the sixteen
+          Switch direction and the whole path rebuilds, not just the labels. Eleven of the sixteen
           properties in the comparison table change with it.
         </p>
       </PageHead>

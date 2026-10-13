@@ -1,5 +1,5 @@
 /**
- * spreading.ts — the spread / transmit / despread chain the deck works through
+ * spreading.ts, the spread / transmit / despread chain the deck works through
  * on slides 04 and 07, computed rather than drawn.
  *
  * The deck uses an eight-chip code so the whole cycle fits on one page: Tb = 8
@@ -9,7 +9,7 @@
  * spreading-factor arithmetic in `spreadingFactor` uses the real rates.
  *
  * Everything below is exact integer arithmetic on ±1 sequences. There is no
- * noise model, no pulse shaping and no carrier — those would be fabricated
+ * noise model, no pulse shaping and no carrier, those would be fabricated
  * simulation output, and the deck does not supply them.
  */
 
@@ -40,7 +40,7 @@ export interface SpreadingResult {
  *
  * For the deck's example: 1 228 800 / 9 600 = 128 chips per information bit.
  * The ratio is a bandwidth-expansion figure, NOT a description of the whole
- * coding and modulation chain — module 04 shows where the rate really changes.
+ * coding and modulation chain, module 04 shows where the rate really changes.
  */
 export function spreadingFactor(infoRateBps: number, chipRateCps = RF.chipRateCps): SpreadingResult {
   const safeRate = infoRateBps > 0 ? infoRateBps : 1;
@@ -94,7 +94,7 @@ export interface SpreadingDemoInput {
   bits: number[];
   /** Walsh index used as the illustrative spreading code. */
   codeIndex: number;
-  /** Code length in chips — 8 in the deck's worked example. */
+  /** Code length in chips, 8 in the deck's worked example. */
   codeLength: number;
   /**
    * Walsh index of a second, interfering user. `null` means a clean channel.
@@ -108,7 +108,7 @@ export interface SpreadingDemoInput {
 
 /**
  * The default uses W4 rather than an arbitrary index because W4 is one of the
- * 8-chip codes whose partners (W5, W6, W7) actually leak under misalignment —
+ * 8-chip codes whose partners (W5, W6, W7) actually leak under misalignment,
  * 4 of a possible 8 at one chip of delay, which is exactly the figure the deck
  * prints on slide 07. Pairs such as W1/W2 stay orthogonal at every cyclic
  * shift, so defaulting to one of those would let a reader drag the delay slider
@@ -131,7 +131,7 @@ export const SELF_JAMMING_PRESET: SpreadingDemoInput = {
   interfererDelayChips: 1,
 };
 
-/** Repeat each bit across `codeLength` chips — the data waveform at chip rate. */
+/** Repeat each bit across `codeLength` chips, the data waveform at chip rate. */
 function holdBits(bits: number[], codeLength: number): number[] {
   const out: number[] = [];
   for (const bit of bits) for (let c = 0; c < codeLength; c += 1) out.push(bit);
@@ -153,7 +153,7 @@ function tileCode(code: number[], bitCount: number): number[] {
  *   code       c(t), one period per bit
  *   chips      d·c, the transmitted chip sequence
  *   channel    d·c (+ the interferer's own spread signal, if enabled)
- *   correlate  received × c — every wanted chip squares to +1
+ *   correlate  received × c, every wanted chip squares to +1
  *   integrate  running sum over each Tb
  *   decide     sign of the integral → recovered bit
  */
@@ -210,7 +210,7 @@ export function buildSpreadingStages(input: SpreadingDemoInput): SpreadingStage[
     {
       id: 'bit',
       title: 'Information bit',
-      caption: `d(t) — each bit held for Tb. Carries the information; ${bits.length} bits here.`,
+      caption: `d(t), each bit held for Tb. Carries the information; ${bits.length} bits here.`,
       waveform: dataWave,
       samplesPerBit: codeLength,
       readouts: [
@@ -221,7 +221,7 @@ export function buildSpreadingStages(input: SpreadingDemoInput): SpreadingStage[
     {
       id: 'code',
       title: 'Spreading code',
-      caption: `c(t) — W${codeIndex} of the ${codeLength}-chip family, one full period per bit.`,
+      caption: `c(t), W${codeIndex} of the ${codeLength}-chip family, one full period per bit.`,
       waveform: codeWave,
       samplesPerBit: codeLength,
       readouts: [
@@ -232,7 +232,7 @@ export function buildSpreadingStages(input: SpreadingDemoInput): SpreadingStage[
     {
       id: 'chips',
       title: 'Chip sequence',
-      caption: 'd·c — the transmitted chips. One bit has become a pattern.',
+      caption: 'd·c, the transmitted chips. One bit has become a pattern.',
       waveform: transmitted,
       samplesPerBit: codeLength,
       readouts: [
@@ -262,7 +262,7 @@ export function buildSpreadingStages(input: SpreadingDemoInput): SpreadingStage[
       id: 'correlate',
       title: 'Receiver correlation',
       caption:
-        'received × c — every chip of our own signal squares to +1, so the code cancels itself ' +
+        'received × c, every chip of our own signal squares to +1, so the code cancels itself ' +
         'and the data reappears.',
       waveform: correlated,
       samplesPerBit: codeLength,
@@ -280,7 +280,7 @@ export function buildSpreadingStages(input: SpreadingDemoInput): SpreadingStage[
           label: 'Interferer adds',
           value:
             interfererIndex === null
-              ? '—'
+              ? 'n/a'
               : `${interfererContribution > 0 ? '+' : ''}${interfererContribution} of ${peak}`,
         },
       ],
@@ -297,7 +297,7 @@ export function buildSpreadingStages(input: SpreadingDemoInput): SpreadingStage[
         { label: 'Recovered', value: decisions.map((b) => (b === 1 ? '+1' : '−1')).join(', ') },
         {
           label: 'Correct',
-          value: decisions.every((d, i) => d === bits[i]) ? 'yes — all bits recovered' : 'no — a bit flipped',
+          value: decisions.every((d, i) => d === bits[i]) ? 'yes, all bits recovered' : 'no, a bit flipped',
         },
       ],
     },
@@ -311,7 +311,7 @@ function formatSum(integrated: number[], bitIndex: number, codeLength: number): 
 
 /* ------------------------------------------------------------------ *
  * Self-jamming: correlation as a function of interferer delay.
- * Deck slide 07 — aligned gives 0, one chip late gives 4 out of 8.
+ * Deck slide 07, aligned gives 0, one chip late gives 4 out of 8.
  * ------------------------------------------------------------------ */
 
 export interface MisalignmentPoint {
@@ -321,7 +321,7 @@ export interface MisalignmentPoint {
 
 /**
  * Correlation leaked by an interfering Walsh code at each chip delay, for the
- * short code family. At zero delay the result is 0 for any distinct pair — that
+ * short code family. At zero delay the result is 0 for any distinct pair, that
  * is orthogonality. At non-zero delay it generally is not.
  */
 export function misalignmentProfile(

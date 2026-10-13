@@ -1,9 +1,9 @@
 /**
- * routes.ts — the site's five modules plus the overview.
+ * routes.ts, the site's five modules plus the overview.
  *
  * Routing is hash-based (`#/rf`, `#/codes`, …) and hand-rolled rather than
  * pulled in from a router library. Hash routing means the built site works from
- * any static host — GitHub Pages included — with no server rewrite rules, and
+ * any static host, GitHub Pages included, with no server rewrite rules, and
  * a deep link survives a page refresh.
  */
 
@@ -56,7 +56,7 @@ export const ROUTES: Route[] = [
     nav: 'Code Explorer',
     title: 'Code distribution',
     blurb:
-      'The real order-64 Walsh family, genuine maximal-length PN sequences, and a masked long-code generator — with the alignment assumption made visible.',
+      'The real order-64 Walsh family, genuine maximal-length PN sequences, and a masked long-code generator, with the alignment assumption made visible.',
     hash: '#/codes',
   },
   {

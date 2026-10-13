@@ -1,5 +1,5 @@
 /**
- * charts.tsx — the technical plots.
+ * charts.tsx, the technical plots.
  *
  * All of these take real computed arrays from src/lib and draw them to scale.
  * Nothing here invents a shape: a waveform is the samples it was given, and a
@@ -17,7 +17,7 @@ import { PLOT_COLOURS } from './theme';
 const { INK, BRICK, OLIVE, GREY } = PLOT_COLOURS;
 
 /* ------------------------------------------------------------------ *
- * Step waveform — a chip or bit stream held at each sample.
+ * Step waveform, a chip or bit stream held at each sample.
  * ------------------------------------------------------------------ */
 
 export function Waveform({
@@ -165,7 +165,7 @@ export function Waveform({
 }
 
 /* ------------------------------------------------------------------ *
- * Stem plot — correlation against shift, or against code index.
+ * Stem plot, correlation against shift, or against code index.
  * ------------------------------------------------------------------ */
 
 export function StemPlot({
@@ -184,7 +184,7 @@ export function StemPlot({
   yLabel: string;
   colour?: string;
   highlightIndex?: number;
-  /** Makes the plot interactive — click a stem to select that shift/index. */
+  /** Makes the plot interactive, click a stem to select that shift/index. */
   onPick?: (index: number) => void;
   /** Annotation drawn at the peak, e.g. "peak = 63". */
   thresholdLabel?: string;
@@ -288,7 +288,7 @@ export function StemPlot({
 }
 
 /* ------------------------------------------------------------------ *
- * Chip-by-chip comparison strip — rows of ±1 aligned in a grid.
+ * Chip-by-chip comparison strip, rows of ±1 aligned in a grid.
  * ------------------------------------------------------------------ */
 
 export interface ChipRow {

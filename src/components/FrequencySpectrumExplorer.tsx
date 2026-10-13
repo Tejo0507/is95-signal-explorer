@@ -108,7 +108,7 @@ export function FrequencySpectrumExplorer() {
         caption={
           <>
             The two licensed bands on one axis. Each is 25 MHz wide and holds many 1.25 MHz
-            carriers — the shaded block is the allocation, not a channel. Drag the marker; the
+            carriers, the shaded block is the allocation, not a channel. Drag the marker; the
             dashed tie-line shows its duplex pair 45 MHz away.
           </>
         }
@@ -275,11 +275,11 @@ export function FrequencySpectrumExplorer() {
           {
             label: 'Inside a band?',
             value: band ? band.label : 'No',
-            note: band ? band.direction : `Between ${REVERSE_BAND.highMHz} and ${FORWARD_BAND.lowMHz} MHz — not allocated to either link`,
+            note: band ? band.direction : `Between ${REVERSE_BAND.highMHz} and ${FORWARD_BAND.lowMHz} MHz, not allocated to either link`,
           },
           {
             label: 'Duplex pair',
-            value: pair !== null ? pair.toFixed(2) : '—',
+            value: pair !== null ? pair.toFixed(2) : 'n/a',
             unit: pair !== null ? 'MHz' : undefined,
             note:
               pair !== null
@@ -288,7 +288,7 @@ export function FrequencySpectrumExplorer() {
           },
           {
             label: 'Offset from band edge',
-            value: band ? (marker - band.lowMHz).toFixed(2) : '—',
+            value: band ? (marker - band.lowMHz).toFixed(2) : 'n/a',
             unit: band ? 'MHz' : undefined,
             note: band ? `of ${RF.bandSpanMHz} MHz available` : undefined,
           },
@@ -316,7 +316,7 @@ export function FrequencySpectrumExplorer() {
           {
             label: 'Nominal carriers per band',
             value: nominalCarriers,
-            note: `${RF.bandSpanMHz} ÷ ${RF.nominalChannelBandwidthMHz} — simple arithmetic, before guard bands or real-world channel plans`,
+            note: `${RF.bandSpanMHz} ÷ ${RF.nominalChannelBandwidthMHz}, simple arithmetic, before guard bands or real-world channel plans`,
             emphasis: true,
           },
           {
@@ -333,7 +333,7 @@ export function FrequencySpectrumExplorer() {
         <Term k="licensed band">licensed band</Term>, the 1.25 MHz{' '}
         <Term k="bandwidth">nominal channel bandwidth</Term>, and the 1.2288 Mchip/s{' '}
         <Term k="chip rate">chip rate</Term>. The first is spectrum an operator owns, the second is
-        how much of it one carrier occupies, and the third is a rate measured in chips per second —
+        how much of it one carrier occupies, and the third is a rate measured in chips per second,
         it is not a bandwidth at all.
       </Why>
 
@@ -389,7 +389,7 @@ function ChannelZoom({ centre, inBand }: { centre: number; inBand: boolean }) {
       caption={
         <>
           One nominal {bw} MHz channel centred on the marker, drawn to scale in a {span} MHz window,
-          with adjacent nominal channel positions in grey. The envelope shape is schematic — no
+          with adjacent nominal channel positions in grey. The envelope shape is schematic, no
           power spectral density is measured or simulated. Every user on this carrier occupies all
           of it, all of the time.
         </>

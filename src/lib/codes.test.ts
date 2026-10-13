@@ -1,5 +1,5 @@
 /**
- * codes.test.ts — tests for the claims the site makes on screen.
+ * codes.test.ts, tests for the claims the site makes on screen.
  *
  * These are not coverage exercises. Each one checks a specific statement a
  * student will read in the interface, so that if the maths ever drifts the
@@ -34,11 +34,11 @@ import { allocationCounts, forwardAllocation } from './channels';
 import { forwardPipeline, repetitionFactor, reversePipeline } from './pipelines';
 
 /* ================================================================== *
- * Walsh functions — the forward link's channelisation codes
+ * Walsh functions, the forward link's channelisation codes
  * ================================================================== */
 
 describe('Walsh functions', () => {
-  it('generates W0 as all +1 — the deck’s "all zeros, always on" pilot', () => {
+  it('generates W0 as all +1, the deck’s "all zeros, always on" pilot', () => {
     expect(walshSequence(0, 64)).toEqual(new Array(64).fill(1));
   });
 
@@ -78,7 +78,7 @@ describe('Walsh functions', () => {
     expect(pairs).toBe((64 * 63) / 2);
   });
 
-  it('can lose orthogonality under misalignment — but only for some pairs', () => {
+  it('can lose orthogonality under misalignment, but only for some pairs', () => {
     // W4/W5 leak once shifted; W1/W2 do not. Both facts matter: the first is
     // why alignment is load-bearing, the second is why the UI must not promise
     // that every misaligned pair misbehaves.
@@ -104,7 +104,7 @@ describe('Walsh functions', () => {
   it('reproduces the deck’s 8-chip self-jamming figures: 0 aligned, 4 of 8 one chip late', () => {
     // Deck slide 07 shows an 8-chip pair that cancels exactly when aligned and
     // leaves 4 of a possible 8 at one chip of delay. W4/W5 of the 8-chip Walsh
-    // family behave exactly so — which is why they are the demo's default.
+    // family behave exactly so, which is why they are the demo's default.
     const a = walshSequence(4, CHIP_DEMO.codeLength);
     const b = walshSequence(5, CHIP_DEMO.codeLength);
 
@@ -167,7 +167,7 @@ describe('maximal-length PN sequences', () => {
 });
 
 /* ================================================================== *
- * Long codes — the masked generator
+ * Long codes, the masked generator
  * ================================================================== */
 
 describe('masked long-code generator', () => {
@@ -213,7 +213,7 @@ describe('masked long-code generator', () => {
 });
 
 /* ================================================================== *
- * Spreading arithmetic — the headline 128
+ * Spreading arithmetic, the headline 128
  * ================================================================== */
 
 describe('spreading factor', () => {
@@ -361,7 +361,7 @@ describe('forward-link Walsh allocation', () => {
 });
 
 /* ================================================================== *
- * Pipelines — rate arithmetic and the links' asymmetry
+ * Pipelines, rate arithmetic and the links' asymmetry
  * ================================================================== */
 
 describe('pipeline rate arithmetic', () => {
@@ -400,7 +400,7 @@ describe('pipeline rate arithmetic', () => {
     const fwd = forwardPipeline(9600);
     const rev = reversePipeline(9600);
 
-    // Different lengths, and different block identities — not one chain relabelled.
+    // Different lengths, and different block identities, not one chain relabelled.
     expect(fwd.length).not.toBe(rev.length);
     expect(fwd.map((s) => s.id)).not.toEqual(rev.map((s) => s.id));
 
@@ -451,7 +451,7 @@ describe('specification constants', () => {
     expect(894 - 849).toBe(RF.duplexSeparationMHz);
   });
 
-  it('nominally fits 20 carriers in a 25 MHz band — so the band is not one carrier', () => {
+  it('nominally fits 20 carriers in a 25 MHz band, so the band is not one carrier', () => {
     expect(RF.bandSpanMHz / RF.nominalChannelBandwidthMHz).toBe(20);
   });
 });

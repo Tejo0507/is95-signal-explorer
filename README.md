@@ -3,7 +3,7 @@
 An interactive laboratory for CDMA (IS-95) radio specifications, spreading codes, logical channels
 and physical channel allocation.
 
-Built for a three-person team presentation on CDMA for **21ECO103T — Modern Wireless Communication
+Built for a three-person team presentation on CDMA for **21ECO103T, Modern Wireless Communication
 System, Unit 4: Code Division Multiple Access**. Every specification follows the course deck
 `SIGNAL_LAB_CDMA_IS95`, which in turn cites the Unit-4 course reference *3G and Beyond*, CDMA /
 IS-95 section (slides 26–58).
@@ -18,8 +18,8 @@ the correlation and spreading arithmetic run live in the browser.
 
 **It is not** a standard-compliant IS-95 modem, and it does not claim to be. Vocoding,
 convolutional coding, interleaving and RF are labelled block diagrams carrying the rates the course
-reference prints on them. Where the reference supplies no value — the pilot PN and long-code
-generator polynomials, for instance — nothing has been invented to fill the gap; the page says so
+reference prints on them. Where the reference supplies no value, the pilot PN and long-code
+generator polynomials, for instance, nothing has been invented to fill the gap; the page says so
 instead. All eight simplifications are listed on the overview page and repeated in a dashed olive
 box at the point each one applies.
 
@@ -48,7 +48,7 @@ npm install
 npm run dev
 ```
 
-Vite prints a local URL (usually `http://localhost:5173`). The site is entirely client-side — there
+Vite prints a local URL (usually `http://localhost:5173`). The site is entirely client-side, there
 is no backend, no API key and no network dependency beyond the Google Fonts stylesheet, which
 degrades to system serif/mono if unavailable.
 
@@ -87,7 +87,7 @@ One test is worth singling out. Orthogonality under misalignment is not uniform 
 family: **651 of the 2 016 distinct pairs leak at some cyclic shift, and the other 1 365 stay at
 zero throughout.** W0/W32 and W19/W41 are both in the clean set, so the obvious demonstration
 pairs show nothing happening when you misalign them. The explorers therefore default to W4/W5,
-which leaks 4 of a possible 8 at one chip of delay in the 8-chip family — exactly the figure the
+which leaks 4 of a possible 8 at one chip of delay in the 8-chip family, exactly the figure the
 deck prints on slide 07. The survey figure is pinned by a test so the number quoted on screen
 cannot silently drift.
 
@@ -144,7 +144,7 @@ src/
 - **To add a glossary tooltip**, add an entry to `src/lib/glossary.ts` and wrap the text in
   `<Term k="your-key">…</Term>`.
 - **To add a pipeline stage**, add it to the array in `src/lib/pipelines.ts`. Every stage needs
-  `purpose`, `input`, `operation`, `output`, `rate` and `next` — a test enforces that.
+  `purpose`, `input`, `operation`, `output`, `rate` and `next`, a test enforces that.
 - **To disclose a new simplification**, add it to `DISCLOSURES` in `src/lib/spec.ts` and render
   `<Disclosure id="your-id" />`. It then appears both in place and in the overview's full list.
 
@@ -153,7 +153,7 @@ src/
 Defined once in `src/styles/globals.css` as custom properties: ivory `#F4F0E7`, charcoal `#22221F`,
 brick red `#B74432`, muted olive `#71806A`, warm grey `#B8B0A2`. Brick red is always the signal
 under study, olive is always a secondary signal or a disclosed simplification, and charcoal is
-always structure. Diagrams are inline SVG — no charting library — so they stay crisp at any zoom
+always structure. Diagrams are inline SVG, no charting library, so they stay crisp at any zoom
 and legible in page source. The layout is responsive down to 320 px.
 
 ---
@@ -185,7 +185,7 @@ vercel --prod   # production
 ```
 
 Or import the repository at vercel.com. Vercel detects Vite and uses `npm run build` with output
-`dist`. Leave `BASE_PATH` unset — Vercel serves from the domain root, and the default `/` is
+`dist`. Leave `BASE_PATH` unset, Vercel serves from the domain root, and the default `/` is
 correct.
 
 ### Netlify, Cloudflare Pages or any static host
@@ -204,5 +204,5 @@ Two claims this project deliberately does not make, following the deck's own sli
 capacity is unlimited, and that spreading is encryption. Spreading gives a measure of privacy; it
 is not cryptographic protection.
 
-IS-95 (cdmaOne) should not be confused with W-CDMA, the 3G UMTS air interface at 3.84 Mchip/s —
+IS-95 (cdmaOne) should not be confused with W-CDMA, the 3G UMTS air interface at 3.84 Mchip/s,
 a different and later standard. Every figure here is IS-95.

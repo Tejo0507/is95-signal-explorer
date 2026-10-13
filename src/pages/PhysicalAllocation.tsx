@@ -1,5 +1,5 @@
 /**
- * PhysicalAllocation.tsx — module 04.
+ * PhysicalAllocation.tsx, module 04.
  *
  * The link toggle and the information rate are held here, so switching
  * direction keeps the rate you were studying and the comparison stays
@@ -69,7 +69,7 @@ export function PhysicalAllocation() {
           caption={
             <>
               The course reference’s own comparison, row for row. Olive values are the ones the two
-              links share — bandwidth, chip rate and frame length. Everything else is asymmetric,
+              links share, bandwidth, chip rate and frame length. Everything else is asymmetric,
               and the asymmetry follows from one fact: the forward link has a single mains-powered
               transmitter with one clock, and the reverse link does not.
             </>

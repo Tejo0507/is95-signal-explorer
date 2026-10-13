@@ -1,5 +1,5 @@
 /**
- * Walkthrough.tsx — first-run guided tour.
+ * Walkthrough.tsx, first-run guided tour.
  *
  * Shown automatically on a first visit (lib/storage.ts holds the remembered
  * flag), and re-openable at any time from the masthead. It explains the five
@@ -13,27 +13,27 @@ const STEPS: { num: string; text: string }[] = [
   {
     num: '01',
     text:
-      'RF & SPREADING — where IS-95 sits on the spectrum, and what the 128 ratio does and does not mean. Drag the frequency marker; step the spreading animation through a full spread-and-recover cycle.',
+      'RF & SPREADING, where IS-95 sits on the spectrum, and what the 128 ratio does and does not mean. Drag the frequency marker; step the spreading animation through a full spread-and-recover cycle.',
   },
   {
     num: '02',
     text:
-      'LOGICAL CHANNELS — the four forward channel types across 64 Walsh codes, and the two reverse channels. Switch direction to see why Walsh functions do a different job in each.',
+      'LOGICAL CHANNELS, the four forward channel types across 64 Walsh codes, and the two reverse channels. Switch direction to see why Walsh functions do a different job in each.',
   },
   {
     num: '03',
     text:
-      'CODE EXPLORER — real order-64 Walsh functions, genuine m-sequences, and a masked long-code generator. The misalignment sliders are the point: orthogonality is a property of aligned codes.',
+      'CODE EXPLORER, real order-64 Walsh functions, genuine m-sequences, and a masked long-code generator. The misalignment sliders are the point: orthogonality is a property of aligned codes.',
   },
   {
     num: '04',
     text:
-      'PHYSICAL ALLOCATION — both processing chains, block by block. They have different shapes on purpose. Click any block for its input, operation, output and rate.',
+      'PHYSICAL ALLOCATION, both processing chains, block by block. They have different shapes on purpose. Click any block for its input, operation, output and rate.',
   },
   {
     num: '05',
     text:
-      'TRACE A SIGNAL — pick a channel and follow one signal through all seven stages, then compare what changes between the links against what they share.',
+      'TRACE A SIGNAL, pick a channel and follow one signal through all seven stages, then compare what changes between the links against what they share.',
   },
 ];
 
@@ -87,13 +87,13 @@ export function Walkthrough({
           <strong>Colour convention.</strong> Brick red is the signal under study. Olive is a
           secondary signal, a shared property, or a disclosed simplification. Charcoal is
           structure: axes, correlator output, block diagrams. Dashed olive boxes are always a
-          disclosure — a place where this site simplifies something and says so.
+          disclosure, a place where this site simplifies something and says so.
         </p>
         <p className="small">
           <strong>One claim this site does not make.</strong> It is not a standard-compliant IS-95
           modem. It implements the code mathematics exactly and models the rest as labelled block
-          diagrams. Where the course reference does not supply a value — the PN and long-code
-          polynomials, for instance — nothing is invented to fill the gap.
+          diagrams. Where the course reference does not supply a value, the PN and long-code
+          polynomials, for instance, nothing is invented to fill the gap.
         </p>
 
         <div className="walkthrough__foot">

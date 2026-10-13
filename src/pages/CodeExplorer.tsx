@@ -1,5 +1,5 @@
 /**
- * CodeExplorer.tsx — module 03.
+ * CodeExplorer.tsx, module 03.
  *
  * Three code families, in the order a signal meets them, with a tabbed
  * interface so each explorer gets the full page width (these are the busiest
@@ -22,19 +22,19 @@ const TABS: { id: Tab; label: string; heading: string; sub: string }[] = [
     id: 'walsh',
     label: 'A · Walsh functions',
     heading: 'Walsh functions',
-    sub: 'Orthogonal when aligned — the forward link’s channelisation, the reverse link’s modulation.',
+    sub: 'Orthogonal when aligned, the forward link’s channelisation, the reverse link’s modulation.',
   },
   {
     id: 'pn',
     label: 'B · PN sequences',
     heading: 'PN sequences',
-    sub: 'Noise-like, with one sharp autocorrelation peak — which is how a receiver finds timing.',
+    sub: 'Noise-like, with one sharp autocorrelation peak, which is how a receiver finds timing.',
   },
   {
     id: 'long',
     label: 'C · Long codes',
     heading: 'Long codes',
-    sub: 'A 42-stage generator with a per-user mask — user identity on the reverse link, scrambling on the forward.',
+    sub: 'A 42-stage generator with a per-user mask, user identity on the reverse link, scrambling on the forward.',
   },
 ];
 
@@ -43,7 +43,7 @@ const COMPARISON = [
   {
     property: 'Length in IS-95',
     walsh: '64 chips',
-    pn: 'Short — period 2¹⁵ class',
+    pn: 'Short, period 2¹⁵ class',
     long: 'Period 2⁴² − 1',
   },
   {
@@ -72,9 +72,9 @@ const COMPARISON = [
   },
   {
     property: 'Needs alignment?',
-    walsh: 'Yes — orthogonality depends on it',
-    pn: 'No — the peak is what finds alignment',
-    long: 'No — but misalignment costs margin',
+    walsh: 'Yes, orthogonality depends on it',
+    pn: 'No, the peak is what finds alignment',
+    long: 'No, but misalignment costs margin',
   },
 ];
 

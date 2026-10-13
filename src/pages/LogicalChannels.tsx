@@ -1,5 +1,5 @@
 /**
- * LogicalChannels.tsx — module 02.
+ * LogicalChannels.tsx, module 02.
  */
 
 import { LogicalChannelMap } from '../components/LogicalChannelMap';
@@ -77,7 +77,7 @@ export function LogicalChannels() {
             label="Table 2.2"
             caption={
               <>
-                Reverse-link channels. Note the absence of a Walsh column — there is no Walsh index
+                Reverse-link channels. Note the absence of a Walsh column, there is no Walsh index
                 identifying a reverse channel, which is the distinction this module exists to make.
               </>
             }

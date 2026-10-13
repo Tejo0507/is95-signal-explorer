@@ -7,13 +7,13 @@
  * The course reference states that the IS-95 long code comes from a 42-stage
  * generator with period 2^42 − 1 and a 42-bit per-user mask. It does not give
  * the polynomial taps or the initial state. So this page runs the SAME
- * ARCHITECTURE — masked LFSR, output = parity(state AND mask) — on a 4-to-9
+ * ARCHITECTURE, masked LFSR, output = parity(state AND mask), on a 4-to-9
  * stage register with a standard primitive polynomial. Structure and mask
  * behaviour are faithful; the taps are illustrative, and the page says so.
  *
  * THE PROPERTY WORTH SEEING
  * Changing the mask does not give a different sequence. It gives the SAME
- * m-sequence starting at a different phase — which is exactly why one
+ * m-sequence starting at a different phase, which is exactly why one
  * polynomial can serve every user in the system. The page finds that phase
  * offset from the generated bits and reports it, so the claim is demonstrated
  * rather than asserted.
@@ -164,7 +164,7 @@ export function LongCodeExplorer() {
           {
             label: 'IS-95 stages',
             value: CODES.longCodeRegisterStages,
-            note: `Period ${CODES.longCodePeriodExpression} — stated in the course reference`,
+            note: `Period ${CODES.longCodePeriodExpression}, stated in the course reference`,
           },
           {
             label: 'Mask',
@@ -182,8 +182,8 @@ export function LongCodeExplorer() {
             emphasis: true,
             note:
               offset === null
-                ? 'No matching offset — unexpected for a primitive polynomial'
-                : 'Against the reference mask 100…0 — same sequence, different starting point',
+                ? 'No matching offset, unexpected for a primitive polynomial'
+                : 'Against the reference mask 100…0, same sequence, different starting point',
           },
           {
             label: 'Ones / zeros',
@@ -201,7 +201,7 @@ export function LongCodeExplorer() {
           <>
             The masked generator, first {steps.length} clocks. Brick columns are the feedback taps
             ({poly.taps.map((t) => `s${t}`).join(' ⊕ ')}); shaded cells are the stages this mask
-            selects. The output is the XOR of the shaded cells — not simply the last stage, which
+            selects. The output is the XOR of the shaded cells, not simply the last stage, which
             is what makes the mask the per-user parameter.
           </>
         }
@@ -265,7 +265,7 @@ export function LongCodeExplorer() {
         caption={
           <>
             Three masks on the same generator and the same initial state. The sequences look
-            unrelated chip by chip, but each is the same m-sequence at a different phase — the
+            unrelated chip by chip, but each is the same m-sequence at a different phase, the
             offsets are measured from the generated bits, not asserted. This is how one generator
             polynomial serves every user in the system.
           </>
@@ -287,7 +287,7 @@ export function LongCodeExplorer() {
             Decimation, at the model’s scale. The forward link runs the long code at{' '}
             {(RF.chipRateCps / 1e6).toFixed(4)} Mc/s and takes every 64th bit to get 19 200 s/s for
             scrambling the symbol stream. Shown here as 1:8 so the relationship is visible on a{' '}
-            {period}-chip period — the ratio is illustrative, the mechanism is the deck’s.
+            {period}-chip period, the ratio is illustrative, the mechanism is the deck’s.
           </>
         }
       >
@@ -306,7 +306,7 @@ export function LongCodeExplorer() {
       />
 
       <div className="split--even split">
-        <Panel variant="sunk" title="Forward link — the long code scrambles">
+        <Panel variant="sunk" title="Forward link, the long code scrambles">
           <p className="small" style={{ margin: 0 }}>
             Run at 1.2288 Mc/s, decimated 1:64 to 19 200 s/s, and used in the MUX to scramble one
             user’s symbol stream before Walsh covering. Separation between channels here is done by
@@ -314,7 +314,7 @@ export function LongCodeExplorer() {
             channelisation.
           </p>
         </Panel>
-        <Panel variant="sunk" title="Reverse link — the long code identifies">
+        <Panel variant="sunk" title="Reverse link, the long code identifies">
           <p className="small" style={{ margin: 0 }}>
             Run at the full 1.2288 Mc/s, four times the 307.2 kc/s Walsh-modulator output. Here the
             long code is what tells one mobile from another. Because mobiles are asynchronous these
@@ -325,7 +325,7 @@ export function LongCodeExplorer() {
       </div>
 
       <Why>
-        A mask is not a different code — it is a different <em>phase</em> of one code. Toggle a mask
+        A mask is not a different code, it is a different <em>phase</em> of one code. Toggle a mask
         bit and watch the measured phase offset change while the period stays at 2ⁿ − 1. That single
         design choice is what makes per-user scrambling cheap enough to put in a 1995 handset.
       </Why>
@@ -335,7 +335,7 @@ export function LongCodeExplorer() {
         mask-as-phase-offset property, and the decimation mechanism. What is not: the register is 4
         to 9 stages rather than 42, the taps come from a standard primitive-polynomial table rather
         than from IS-95, and the initial state is whatever you set. The course reference supplies
-        the stage count, the period and the existence of the mask — not the polynomial — so nothing
+        the stage count, the period and the existence of the mask, not the polynomial, so nothing
         on this page is presented as standard-compliant.
       </Disclosure>
     </div>

@@ -1,9 +1,9 @@
 /**
- * spec.ts — every numerical specification used anywhere in this site.
+ * spec.ts, every numerical specification used anywhere in this site.
  *
  * SINGLE SOURCE OF TRUTH. Each value below is taken from the course deck
  * "SIGNAL_LAB_CDMA_IS95" (21ECO103T Modern Wireless Communication System,
- * Unit 4 — Code Division Multiple Access), which in turn cites the Unit-4
+ * Unit 4, Code Division Multiple Access), which in turn cites the Unit-4
  * course reference "3G and Beyond", CDMA / IS-95 section, slides 26-58.
  *
  * The `slide` field on each group records where the figure comes from so a
@@ -14,9 +14,9 @@
 
 export const SOURCE = {
   deck: 'SIGNAL_LAB_CDMA_IS95',
-  course: '21ECO103T — Modern Wireless Communication System',
+  course: '21ECO103T, Modern Wireless Communication System',
   unit: 'Unit 4 · Code Division Multiple Access',
-  reference: 'Unit-4: 3G and Beyond — course deck, CDMA / IS-95 section (slides 26–58)',
+  reference: 'Unit-4: 3G and Beyond, course deck, CDMA / IS-95 section (slides 26–58)',
 } as const;
 
 /* ------------------------------------------------------------------ *
@@ -55,22 +55,22 @@ export const BANDS: Band[] = [REVERSE_BAND, FORWARD_BAND];
 export const RF = {
   /** Deck slide 10: "45 MHz between a reverse channel and its forward pair". */
   duplexSeparationMHz: 45,
-  /** Deck slides 05 & 10: "Channel bandwidth 1.25 MHz — one carrier, one direction". */
+  /** Deck slides 05 & 10: "Channel bandwidth 1.25 MHz, one carrier, one direction". */
   nominalChannelBandwidthMHz: 1.25,
   /** Deck slide 10: each licensed band is 25 MHz wide. */
   bandSpanMHz: 25,
-  /** Deck slide 05: "Chip rate 1.2288 Mchip/s — fixed for every channel". */
+  /** Deck slide 05: "Chip rate 1.2288 Mchip/s, fixed for every channel". */
   chipRateCps: 1_228_800,
-  /** Deck slide 05: "Peak user rate 9.6 kb/s — per traffic channel". */
+  /** Deck slide 05: "Peak user rate 9.6 kb/s, per traffic channel". */
   exampleInfoRateBps: 9_600,
   /** Deck slide 05: "Total spreading 128 = 1.2288 Mchip/s ÷ 9.6 kb/s". */
   exampleSpreadingFactor: 128,
-  /** Axis limits for the spectrum plot — presentation choice, matches slide 10. */
+  /** Axis limits for the spectrum plot, presentation choice, matches slide 10. */
   axisLowMHz: 820,
   axisHighMHz: 900,
 } as const;
 
-/** Deck slide 05 — the standard at a glance. */
+/** Deck slide 05, the standard at a glance. */
 export const STANDARD_FACTS: { label: string; value: string; note: string }[] = [
   { label: 'Standard', value: 'IS-95', note: 'cdmaOne · TIA Interim Standard 95 · 2G' },
   { label: 'Access method', value: 'DS-CDMA', note: 'Direct-sequence spread spectrum' },
@@ -167,19 +167,19 @@ export const DISCLOSURES: DisclosureItem[] = [
     where: 'Whole site',
     text:
       'This is a teaching instrument, not an IS-95 modem. It implements the Walsh family and ' +
-      'LFSR mathematics exactly, and models everything else — vocoding, convolutional coding, ' +
-      'interleaving, RF — as labelled block diagrams rather than running signal processing.',
+      'LFSR mathematics exactly, and models everything else, vocoding, convolutional coding, ' +
+      'interleaving, RF, as labelled block diagrams rather than running signal processing.',
   },
   {
     id: 'spectrum-shape',
-    where: '01 — RF & Spreading',
+    where: '01 · RF & Spreading',
     text:
       'Spectral shapes in the plots are schematic. The deck marks its own spectrum figures ' +
       '"shape is schematic"; no power spectral density has been measured or simulated here.',
   },
   {
     id: 'spreading-factor',
-    where: '01 — RF & Spreading',
+    where: '01 · RF & Spreading',
     text:
       'Chip rate ÷ information rate is one ratio, not the whole story. The deck calls 128 the ' +
       '"total spreading" for 9.6 kb/s, and the pipelines in module 04 show where the rate ' +
@@ -187,7 +187,7 @@ export const DISCLOSURES: DisclosureItem[] = [
   },
   {
     id: 'pn-polynomials',
-    where: '03 — Code Explorer · PN sequences',
+    where: '03 · Code Explorer · PN sequences',
     text:
       'The generator polynomials of the IS-95 pilot PN sequences are not given in the course ' +
       'reference, so this explorer generates short maximal-length sequences from standard ' +
@@ -196,7 +196,7 @@ export const DISCLOSURES: DisclosureItem[] = [
   },
   {
     id: 'long-code-model',
-    where: '03 — Code Explorer · Long codes',
+    where: '03 · Code Explorer · Long codes',
     text:
       'The IS-95 long code uses a 42-stage register with period 2^42 − 1 and a 42-bit user ' +
       'mask. The course reference states those facts but not the polynomial taps or initial ' +
@@ -205,15 +205,15 @@ export const DISCLOSURES: DisclosureItem[] = [
   },
   {
     id: 'walsh-alignment',
-    where: '03 — Code Explorer · Walsh functions',
+    where: '03 · Code Explorer · Walsh functions',
     text:
       'Correlation results assume perfectly aligned codes of equal duration over one full ' +
       'period. That assumption holds on the synchronous forward link and does not hold between ' +
-      'asynchronous reverse-link mobiles — the misalignment control shows what breaks.',
+      'asynchronous reverse-link mobiles, the misalignment control shows what breaks.',
   },
   {
     id: 'paging-config',
-    where: '02 & 04 — Channel allocation',
+    where: '02 & 04 · Channel allocation',
     text:
       'The deck’s numbering (pilot W0, sync W32, paging W1–W7, traffic W8–W31 and W33–W63) is ' +
       'the reference layout. How many paging channels an operator actually configures moves the ' +
@@ -221,7 +221,7 @@ export const DISCLOSURES: DisclosureItem[] = [
   },
   {
     id: 'trace-rates',
-    where: '05 — Trace a Signal',
+    where: '05 · Trace a Signal',
     text:
       'The trace reports the rates the deck prints on its own signal paths. Intermediate rates ' +
       'for the 4800, 2400 and 1200 b/s cases are derived from the deck’s repetition rule ' +

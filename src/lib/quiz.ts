@@ -1,5 +1,5 @@
 /**
- * quiz.ts — knowledge checks, one set per module.
+ * quiz.ts, knowledge checks, one set per module.
  *
  * These test whether a reader has understood a distinction, not whether they
  * can recall a number. Where a numerical answer is asked for (the 128 ratio),
@@ -28,15 +28,15 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       prompt:
         'An operator holds the full 869–894 MHz forward band. How many 1.25 MHz CDMA carriers does that 25 MHz block represent?',
       options: [
-        { id: 'a', text: 'One — the whole 25 MHz is a single CDMA carrier' },
-        { id: 'b', text: 'Many — the band holds multiple 1.25 MHz carriers' },
-        { id: 'c', text: 'None — 1.25 MHz is a chip rate, not a bandwidth' },
+        { id: 'a', text: 'One, the whole 25 MHz is a single CDMA carrier' },
+        { id: 'b', text: 'Many, the band holds multiple 1.25 MHz carriers' },
+        { id: 'c', text: 'None, 1.25 MHz is a chip rate, not a bandwidth' },
       ],
       correctId: 'b',
       explanation:
         'The licensed band and the channel are different things. 1.25 MHz is the nominal width of ' +
         'one carrier; a 25 MHz band accommodates many of them. The deck keeps these separate on ' +
-        'slide 10: "BAND ALLOCATION 824–849 · 869–894 MHz" versus "CHANNEL BANDWIDTH 1.25 MHz — ' +
+        'slide 10: "BAND ALLOCATION 824–849 · 869–894 MHz" versus "CHANNEL BANDWIDTH 1.25 MHz, ' +
         'one carrier, one direction".',
     },
     {
@@ -50,7 +50,7 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       ],
       correctId: 'b',
       explanation:
-        '1 228 800 ÷ 9 600 = 128 chips per information bit — the deck’s "total spreading" figure ' +
+        '1 228 800 ÷ 9 600 = 128 chips per information bit, the deck’s "total spreading" figure ' +
         'on slide 05. It is the overall bandwidth-expansion ratio, not the gain of any single ' +
         'processing block: module 04 shows the rate changing in stages (rate 1/2 coding to 19.2 ' +
         'ks/s, then 64 chips per symbol).',
@@ -59,9 +59,9 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       id: 'rf-3',
       prompt: 'A handset is tuned to a forward channel at 880.00 MHz. Where is its paired reverse channel?',
       options: [
-        { id: 'a', text: '925.00 MHz — 45 MHz above' },
-        { id: 'b', text: '835.00 MHz — 45 MHz below' },
-        { id: 'c', text: '878.75 MHz — 1.25 MHz below' },
+        { id: 'a', text: '925.00 MHz, 45 MHz above' },
+        { id: 'b', text: '835.00 MHz, 45 MHz below' },
+        { id: 'c', text: '878.75 MHz, 1.25 MHz below' },
       ],
       correctId: 'b',
       explanation:
@@ -80,9 +80,9 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       ],
       correctId: 'c',
       explanation:
-        'The deck is pointed about this on slide 10: the chip rate is "a rate inside the channel — ' +
+        'The deck is pointed about this on slide 10: the chip rate is "a rate inside the channel, ' +
         'not a width". The other three are all frequency measurements: channel bandwidth, duplex ' +
-        'spacing and band span. The units tell you which is which — chip/s against Hz.',
+        'spacing and band span. The units tell you which is which, chip/s against Hz.',
     },
   ],
 
@@ -100,15 +100,15 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       explanation:
         'W32 is the synchronisation channel, at 1200 b/s, carrying system time, long-code state ' +
         'and protocol revision. The pilot is W0, paging takes W1–W7, and traffic fills W8–W31 and ' +
-        'W33–W63 — the gap at 32 is exactly where sync sits.',
+        'W33–W63, the gap at 32 is exactly where sync sits.',
     },
     {
       id: 'ch-2',
       prompt:
         'Does selecting a Walsh function alone guarantee orthogonal separation between asynchronous reverse-link mobile users?',
       options: [
-        { id: 'a', text: 'Yes — Walsh functions are orthogonal by construction' },
-        { id: 'b', text: 'No — orthogonality needs chip alignment, which asynchronous mobiles do not have' },
+        { id: 'a', text: 'Yes, Walsh functions are orthogonal by construction' },
+        { id: 'b', text: 'No, orthogonality needs chip alignment, which asynchronous mobiles do not have' },
         { id: 'c', text: 'Yes, provided every mobile uses a different Walsh index' },
       ],
       correctId: 'b',
@@ -123,14 +123,14 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       id: 'ch-3',
       prompt: 'An operator reduces its configuration from 7 paging channels to 3. What happens to the Walsh allocation?',
       options: [
-        { id: 'a', text: 'Nothing — the allocation is fixed by the standard' },
+        { id: 'a', text: 'Nothing, the allocation is fixed by the standard' },
         { id: 'b', text: 'Four more Walsh indices become available for traffic' },
         { id: 'c', text: 'The sync channel moves from W32 to W28' },
       ],
       correctId: 'b',
       explanation:
         'Pilot (W0) and sync (W32) are fixed, so the freed paging codes W4–W7 become traffic ' +
-        'capacity: 55 traffic channels becomes 59. This is the deck’s own caveat on slide 12 — ' +
+        'capacity: 55 traffic channels becomes 59. This is the deck’s own caveat on slide 12, ' +
         '"the usable allocation depends on how many paging channels an operator configures".',
     },
     {
@@ -144,7 +144,7 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       correctId: 'b',
       explanation:
         'The access channel, at a fixed 4800 b/s, carries registration, call set-up and page ' +
-        'responses — everything a mobile needs to say before it has been assigned a traffic ' +
+        'responses, everything a mobile needs to say before it has been assigned a traffic ' +
         'channel. The paging channel is the forward-link counterpart: the network’s way of ' +
         'calling the handset.',
     },
@@ -162,7 +162,7 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       ],
       correctId: 'b',
       explanation:
-        'Exactly zero, for every distinct pair — that is what orthogonality means, and the ' +
+        'Exactly zero, for every distinct pair, that is what orthogonality means, and the ' +
         'explorer verifies it across all 2 016 pairs rather than asserting it. Note the contrast ' +
         'with an m-sequence, whose off-peak autocorrelation is −1 rather than 0: PN sequences are ' +
         'chosen for a sharp timing peak, Walsh functions for exact cancellation.',
@@ -171,7 +171,7 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       id: 'code-2',
       prompt: 'What distinguishes the pilot PN sequences from the long code in IS-95?',
       options: [
-        { id: 'a', text: 'Nothing — they are two names for the same sequence' },
+        { id: 'a', text: 'Nothing, they are two names for the same sequence' },
         {
           id: 'b',
           text: 'Short PN sequences spread I and Q and identify cells by offset; the long code is per-user, period 2⁴² − 1',
@@ -191,15 +191,15 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       prompt:
         'In the deck’s 8-chip example, two orthogonal codes correlate to 0 when aligned. One user then arrives a single chip late. What leaks into the other user’s correlator?',
       options: [
-        { id: 'a', text: 'Still 0 — orthogonality is a property of the codes' },
+        { id: 'a', text: 'Still 0, orthogonality is a property of the codes' },
         { id: 'b', text: '4 out of a possible 8' },
-        { id: 'c', text: 'The full 8 — the signals become identical' },
+        { id: 'c', text: 'The full 8, the signals become identical' },
       ],
       correctId: 'b',
       explanation:
         'Slide 07: one chip of delay leaves a residue of 4 out of a possible 8. Orthogonality is ' +
         'a property of codes IN ALIGNMENT, not of the codes alone. This is self-jamming, and it is ' +
-        'a timing problem — distinct from the near-far problem, which is a power problem.',
+        'a timing problem, distinct from the near-far problem, which is a power problem.',
     },
     {
       id: 'code-4',
@@ -211,7 +211,7 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       ],
       correctId: 'b',
       explanation:
-        'For any non-zero mask the output is the same m-sequence at a different phase offset — the ' +
+        'For any non-zero mask the output is the same m-sequence at a different phase offset, the ' +
         'explorer finds and reports that offset from the generated bits. This is why one generator ' +
         'polynomial can serve every user in the system: the mask, not the polynomial, is what is ' +
         'per-user.',
@@ -231,16 +231,16 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
       explanation:
         'The forward link’s continuous pilot gives a carrier phase reference, so it can detect ' +
         'coherently. The reverse link has no per-mobile pilot and detects non-coherently, which ' +
-        'costs link margin — so it spends the extra coding. Both links are 1.25 MHz wide and both ' +
+        'costs link margin, so it spends the extra coding. Both links are 1.25 MHz wide and both ' +
         'carry up to 9.6 kb/s, so neither of the other explanations holds.',
     },
     {
       id: 'phy-2',
       prompt: 'On the reverse link, 28.8 ks/s enters the 64-ary Walsh modulator. What comes out, and why?',
       options: [
-        { id: 'a', text: '1.8432 Mc/s — 28.8 × 64' },
-        { id: 'b', text: '307.2 kc/s — 28.8 × 64 ÷ 6, because six symbols select one 64-chip function' },
-        { id: 'c', text: '28.8 kc/s — the modulator does not change the rate' },
+        { id: 'a', text: '1.8432 Mc/s, 28.8 × 64' },
+        { id: 'b', text: '307.2 kc/s, 28.8 × 64 ÷ 6, because six symbols select one 64-chip function' },
+        { id: 'c', text: '28.8 kc/s, the modulator does not change the rate' },
       ],
       correctId: 'b',
       explanation:
@@ -262,7 +262,7 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
         'Logical channel naming and physical processing are related but not the same thing. "W19 ' +
         'is a traffic channel" is a logical statement; physically, W19 is the specific 64-chip ' +
         'Walsh sequence that covers each of that channel’s 19.2 ks/s symbols, turning them into ' +
-        '1.2288 Mc/s of chips. CDMA has no time slots and no per-channel frequency offset — every ' +
+        '1.2288 Mc/s of chips. CDMA has no time slots and no per-channel frequency offset, every ' +
         'channel uses the whole carrier all of the time.',
     },
     {
@@ -312,19 +312,19 @@ export const QUIZZES: Record<string, QuizQuestion[]> = {
         'The bit is multiplexed into the forward traffic channel and commands that one mobile up ' +
         'or down by 1 dB. The loop is closed: the base station measures the mobile’s received ' +
         'power, compares it against a target, and sends a correction every 1.25 ms. It equalises ' +
-        'received power — it does not remove the interference floor other users create.',
+        'received power, it does not remove the interference floor other users create.',
     },
     {
       id: 'tr-3',
       prompt: 'Is spreading a form of encryption?',
       options: [
-        { id: 'a', text: 'Yes — without the code the signal cannot be read' },
-        { id: 'b', text: 'No — it gives a measure of privacy but is not cryptographic protection' },
+        { id: 'a', text: 'Yes, without the code the signal cannot be read' },
+        { id: 'b', text: 'No, it gives a measure of privacy but is not cryptographic protection' },
       ],
       correctId: 'b',
       explanation:
         'The deck is explicit on slide 06 that this is a claim it does not make. Spreading gives a ' +
-        'measure of privacy — you need the code to despread — but the codes are public, ' +
+        'measure of privacy, you need the code to despread, but the codes are public, ' +
         'specified, and derivable, so it is not cryptographic protection. The same slide also ' +
         'declines the claim that CDMA capacity is unlimited.',
     },

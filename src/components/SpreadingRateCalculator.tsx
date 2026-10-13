@@ -5,7 +5,7 @@
  *
  * The deck's example is 1 228 800 / 9 600 = 128 chips per information bit. The
  * information rate here is adjustable, including to values IS-95 never uses,
- * because the arithmetic is what is being taught — but the component says
+ * because the arithmetic is what is being taught, but the component says
  * clearly when the chosen rate is one of the four IS-95 vocoder rates and when
  * it is merely illustrative, and it never implies the ratio describes the whole
  * coding and modulation chain.
@@ -146,7 +146,7 @@ export function SpreadingRateCalculator() {
           {
             label: 'Chip duration Tc',
             value: formatDuration(result.chipDurationS),
-            note: 'Fixed — 1 ÷ 1.2288 Mchip/s',
+            note: 'Fixed, 1 ÷ 1.2288 Mchip/s',
           },
           {
             label: 'This rate in IS-95',
@@ -164,7 +164,7 @@ export function SpreadingRateCalculator() {
       <div className="panel panel--sunk">
         <h3 className="panel__title">How to read this number</h3>
         <p className="small">
-          The factor says how many chips one information bit is spread across — equivalently{' '}
+          The factor says how many chips one information bit is spread across, equivalently{' '}
           <span className="mono">Tb ÷ Tc</span>. At the deck’s 9.6 kb/s example that is{' '}
           <span className="mono">128</span>, and the{' '}
           <Term k="processing gain">processing gain</Term> is about 21 dB: roughly how much the
@@ -172,14 +172,14 @@ export function SpreadingRateCalculator() {
         </p>
         <p className="small">
           What it does <em>not</em> say is how the chain gets there. The forward link reaches
-          1.2288 Mchip/s in stages — rate 1/2 convolutional coding to 19.2 ks/s, then 64 chips per
-          symbol from Walsh covering — and the reverse link reaches it by a different route
+          1.2288 Mchip/s in stages, rate 1/2 convolutional coding to 19.2 ks/s, then 64 chips per
+          symbol from Walsh covering, and the reverse link reaches it by a different route
           entirely. Module 04 walks both.
         </p>
       </div>
 
       <Why>
-        One ratio, 128, is the headline figure for IS-95 — but reading it as "the system multiplies
+        One ratio, 128, is the headline figure for IS-95, but reading it as "the system multiplies
         by 128 somewhere" misses that the rate changes at four distinct points in the chain, and
         differently on each link.
       </Why>
@@ -190,7 +190,7 @@ export function SpreadingRateCalculator() {
 }
 
 /* ------------------------------------------------------------------ *
- * Tb against Tc drawn to scale — capped in drawing, honest in labelling.
+ * Tb against Tc drawn to scale, capped in drawing, honest in labelling.
  * ------------------------------------------------------------------ */
 
 function DurationBar({ factor, rate }: { factor: number; rate: number }) {
@@ -214,7 +214,7 @@ function DurationBar({ factor, rate }: { factor: number; rate: number }) {
           One bit interval Tb divided into chip intervals Tc, to scale.{' '}
           {truncated ? (
             <>
-              Only the first {drawn} of {Math.round(factor)} chips are drawn — beyond that the
+              Only the first {drawn} of {Math.round(factor)} chips are drawn, beyond that the
               divisions stop being distinguishable.
             </>
           ) : (
@@ -227,7 +227,7 @@ function DurationBar({ factor, rate }: { factor: number; rate: number }) {
         {/* Tb */}
         <rect x={padL} y={18} width={plotW} height={20} fill={BRICK} opacity={0.14} stroke={BRICK} strokeWidth={1} />
         <text x={padL + plotW / 2} y={13} fontSize={9} fontFamily="monospace" fill={BRICK} textAnchor="middle">
-          Tb — one information bit at {rate.toLocaleString('en-US')} b/s
+          Tb, one information bit at {rate.toLocaleString('en-US')} b/s
         </text>
 
         {/* Tc divisions */}

@@ -1,11 +1,11 @@
 /**
- * LinkPipeline.tsx — ForwardLinkPipeline and ReverseLinkPipeline.
+ * LinkPipeline.tsx, ForwardLinkPipeline and ReverseLinkPipeline.
  *
  * Both are the same component with a different direction, because the stage
  * data in lib/pipelines.ts already differs: the forward chain has a MUX, a
  * decimated long code and Walsh channelisation; the reverse chain has 64-ary
  * Walsh modulation, a burst randomiser and full-rate long-code spreading. The
- * two diagrams are NOT forced into the same shape — they have different block
+ * two diagrams are NOT forced into the same shape, they have different block
  * counts, different rates and different arithmetic.
  *
  * Every block is clickable and reveals name, purpose, input, operation,
@@ -225,7 +225,7 @@ function PipelineView({
         </Panel>
       ) : null}
 
-      {/* Forward-link receiver chain — the deck's "same chain, undone". */}
+      {/* Forward-link receiver chain, the deck's "same chain, undone". */}
       {receiver.length > 0 ? (
         <Figure
           label="Fig. 4.3"
@@ -246,7 +246,7 @@ function PipelineView({
         ) : (
           <>
             Every mobile runs this chain with its own long code, and the base station tells them
-            apart by that code — not by <Term k="walsh">Walsh index</Term>, which here is carrying
+            apart by that code, not by <Term k="walsh">Walsh index</Term>, which here is carrying
             data. Because arrivals are unaligned the codes are only quasi-orthogonal, so{' '}
             <Term k="power control">tight power control</Term> is what makes the link work at all.
           </>
@@ -307,7 +307,7 @@ function StageDetail({ stage, index, total }: { stage: PipelineStage; index: num
 }
 
 /* ------------------------------------------------------------------ *
- * Receiver chain — compact, with its own selection.
+ * Receiver chain, compact, with its own selection.
  * ------------------------------------------------------------------ */
 
 function ReceiverChain({ stages }: { stages: PipelineStage[] }) {

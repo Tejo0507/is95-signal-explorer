@@ -1,9 +1,9 @@
 /**
- * pipelines.ts — the forward and reverse physical-layer processing chains.
+ * pipelines.ts, the forward and reverse physical-layer processing chains.
  *
  * Stage order, block names and the rates printed on the signal paths all come
  * from the course deck: slide 13 for the forward link, slide 14 for the
- * reverse. The two chains are deliberately NOT the same shape — the forward
+ * reverse. The two chains are deliberately NOT the same shape, the forward
  * link convolutionally codes at rate 1/2, interleaves 24x16, multiplexes in the
  * power-control subchannel and decimated long code, then covers with one Walsh
  * function; the reverse link codes at rate 1/3, interleaves 32x18, uses 64-ary
@@ -56,7 +56,7 @@ export function repetitionFactor(rateBps: number): number {
 }
 
 /* ------------------------------------------------------------------ *
- * Forward link — deck slide 13
+ * Forward link, deck slide 13
  * ------------------------------------------------------------------ */
 
 export function forwardPipeline(rateBps: TrafficRateBps): PipelineStage[] {
@@ -73,7 +73,7 @@ export function forwardPipeline(rateBps: TrafficRateBps): PipelineStage[] {
       input: 'Analogue speech from the microphone.',
       operation:
         'QCELP variable-rate speech coding, in 20 ms frames. The coder drops to a lower rate ' +
-        'during silence — the deck notes 9600 b/s falling to 1200 b/s.',
+        'during silence, the deck notes 9600 b/s falling to 1200 b/s.',
       output: `A ${FRAME_MS} ms frame of vocoder bits at ${fmt(rateBps)} b/s.`,
       rate: `${fmt(rateBps)} b/s`,
       derived: !isFullRate,
@@ -88,7 +88,7 @@ export function forwardPipeline(rateBps: TrafficRateBps): PipelineStage[] {
       operation:
         'Rate 1/2 convolutional coding with constraint length K = 9: two output symbols per ' +
         'input bit, each a function of the current bit and the eight before it.',
-      output: `Two coded symbols per input bit — ${fmt(encoded)} symbols/s.`,
+      output: `Two coded symbols per input bit, ${fmt(encoded)} symbols/s.`,
       rate: `${fmt(encoded)} sym/s`,
       derived: !isFullRate,
       next:
@@ -105,7 +105,7 @@ export function forwardPipeline(rateBps: TrafficRateBps): PipelineStage[] {
         'the same Walsh symbol slots.',
       input: `${fmt(encoded)} coded symbols/s.`,
       operation: isFullRate
-        ? 'No repetition at full rate — the block passes symbols straight through.'
+        ? 'No repetition at full rate, the block passes symbols straight through.'
         : `Each coded symbol is repeated ${repeat}x. Transmit power per symbol is reduced in ` +
           'proportion, so the energy per information bit stays the same.',
       output: `A constant ${fmt(19_200)} symbols/s regardless of the vocoder rate.`,
@@ -140,7 +140,7 @@ export function forwardPipeline(rateBps: TrafficRateBps): PipelineStage[] {
         `The 42-stage long-code generator, masked with this user's 42-bit mask, runs at ` +
         `${(RF.chipRateCps / 1e6).toFixed(4)} Mc/s. A 1:64 decimator takes every 64th bit, giving ` +
         `${fmt(19_200)} s/s, which scrambles the symbol stream. One power-control bit is ` +
-        `multiplexed in every ${POWER_CONTROL.updateIntervalMs} ms — ${POWER_CONTROL.bitsPerCommand} ` +
+        `multiplexed in every ${POWER_CONTROL.updateIntervalMs} ms, ${POWER_CONTROL.bitsPerCommand} ` +
         `bit saying "up" or "down" by ${POWER_CONTROL.stepDb} dB.`,
       output: 'A scrambled symbol stream carrying the power-control subchannel.',
       rate: `${fmt(19_200)} sym/s`,
@@ -155,7 +155,7 @@ export function forwardPipeline(rateBps: TrafficRateBps): PipelineStage[] {
         'by frequency or time.',
       input: `Scrambled symbols at ${fmt(19_200)} sym/s.`,
       operation:
-        'Each symbol is multiplied by the whole 64-chip Walsh function assigned to this channel — ' +
+        'Each symbol is multiplied by the whole 64-chip Walsh function assigned to this channel, ' +
         'W0 for the pilot, W32 for sync, W1-W7 for paging, the rest for traffic. Because the base ' +
         'station transmits every channel from one clock, the Walsh functions arrive chip-aligned ' +
         'and their mutual correlation is genuinely zero.',
@@ -194,7 +194,7 @@ export function forwardPipeline(rateBps: TrafficRateBps): PipelineStage[] {
   ];
 }
 
-/** Deck slide 13: "the same chain, undone" — the mobile receiver. */
+/** Deck slide 13: "the same chain, undone", the mobile receiver. */
 export function forwardReceiverChain(): PipelineStage[] {
   return [
     {
@@ -231,7 +231,7 @@ export function forwardReceiverChain(): PipelineStage[] {
       input: 'Soft symbols with unknown absolute phase.',
       operation:
         'The continuous pilot supplies a carrier phase reference, so the forward link can detect ' +
-        'coherently — a roughly 3 dB advantage over the reverse link’s non-coherent detection.',
+        'coherently, a roughly 3 dB advantage over the reverse link’s non-coherent detection.',
       output: 'Phase-resolved soft symbols.',
       rate: `${fmt(19_200)} sym/s`,
       next: 'Descrambling removes this user’s long-code sequence.',
@@ -287,14 +287,14 @@ export function forwardReceiverChain(): PipelineStage[] {
 }
 
 /* ------------------------------------------------------------------ *
- * Reverse link — deck slide 14
+ * Reverse link, deck slide 14
  * ------------------------------------------------------------------ */
 
 export function reversePipeline(rateBps: TrafficRateBps): PipelineStage[] {
   const repeat = repetitionFactor(rateBps);
   const encoded = rateBps * 3; // rate 1/3 convolutional code
   const isFullRate = rateBps === RF.exampleInfoRateBps;
-  const walshChipRate = (28_800 * 64) / 6; // 307 200 — the deck's own arithmetic
+  const walshChipRate = (28_800 * 64) / 6; // 307 200, the deck's own arithmetic
 
   return [
     {
@@ -306,7 +306,7 @@ export function reversePipeline(rateBps: TrafficRateBps): PipelineStage[] {
       operation: `Variable-rate vocoding in ${FRAME_MS} ms frames, as on the forward link.`,
       output: `${fmt(rateBps)} b/s.`,
       rate: `${fmt(rateBps)} b/s`,
-      next: 'The rate 1/3 convolutional encoder adds error correction — more than the forward link uses.',
+      next: 'The rate 1/3 convolutional encoder adds error correction, more than the forward link uses.',
     },
     {
       id: 'conv',
@@ -318,7 +318,7 @@ export function reversePipeline(rateBps: TrafficRateBps): PipelineStage[] {
       input: `${fmt(rateBps)} b/s.`,
       operation:
         'Rate 1/3 convolutional coding, K = 9: three output symbols per input bit. The forward ' +
-        'link only needs rate 1/2 — the reverse link spends the extra redundancy to make up for ' +
+        'link only needs rate 1/2, the reverse link spends the extra redundancy to make up for ' +
         'non-coherent detection.',
       output: `${fmt(encoded)} symbols/s.`,
       rate: `${fmt(encoded)} sym/s ${isFullRate ? '(≤ 28 800)' : ''}`.trim(),
@@ -339,7 +339,7 @@ export function reversePipeline(rateBps: TrafficRateBps): PipelineStage[] {
           'off the air, so the mobile transmits less of the time instead of transmitting louder.',
       output: `${fmt(28_800)} symbols/s.`,
       rate: `${fmt(28_800)} sym/s`,
-      next: 'The block interleaver spreads them in time — on a 32 × 18 array, not the forward link’s 24 × 16.',
+      next: 'The block interleaver spreads them in time, on a 32 × 18 array, not the forward link’s 24 × 16.',
     },
     {
       id: 'interleaver',
@@ -359,13 +359,13 @@ export function reversePipeline(rateBps: TrafficRateBps): PipelineStage[] {
       name: '64-ary Walsh modulator',
       param: '6 symbols → 1 of 64',
       purpose:
-        'Carry six bits of information in the CHOICE of Walsh function — orthogonal modulation, ' +
+        'Carry six bits of information in the CHOICE of Walsh function, orthogonal modulation, ' +
         'not channelisation.',
       input: `${fmt(28_800)} coded symbols/s.`,
       operation:
         'Six consecutive coded symbols form a six-bit number, 0-63, and that number selects which ' +
         'of the 64 Walsh functions is transmitted. The receiver correlates against all 64 and ' +
-        'picks the largest — no phase reference needed, which is what makes non-coherent ' +
+        'picks the largest, no phase reference needed, which is what makes non-coherent ' +
         'detection possible. The Walsh index here is DATA, not a channel identity.',
       output: `64 chips per group of 6 symbols.`,
       rate: `${fmt(28_800)} × 64 ÷ 6 = ${fmt(walshChipRate)} c/s`,
@@ -376,14 +376,14 @@ export function reversePipeline(rateBps: TrafficRateBps): PipelineStage[] {
       name: 'Burst randomiser',
       param: 'gates repeats',
       purpose:
-        'At reduced rates, transmit only one copy of each repeated group — chosen pseudo-randomly ' +
+        'At reduced rates, transmit only one copy of each repeated group, chosen pseudo-randomly ' +
         'so that different mobiles do not all go quiet at the same instants.',
       input: `${fmt(walshChipRate)} c/s including repeated groups.`,
       operation: isFullRate
         ? 'At full rate there are no repeats to gate, so the randomiser passes everything.'
         : `With repetition factor ${repeat}, only 1 in ${repeat} copies is actually transmitted. ` +
           'Which one is chosen from the long code, so the gating pattern differs per mobile.',
-      output: 'A gated chip stream — lower average transmit power, same information.',
+      output: 'A gated chip stream, lower average transmit power, same information.',
       rate: `${fmt(walshChipRate)} c/s`,
       next: 'The long code spreads the stream by a further factor of four and identifies this mobile.',
     },
@@ -391,12 +391,12 @@ export function reversePipeline(rateBps: TrafficRateBps): PipelineStage[] {
       id: 'longcode',
       name: 'Long-code spreading',
       param: `user mask · period ${CODES.longCodePeriodExpression}`,
-      purpose: 'Identify this particular mobile — this is what separates reverse-link users.',
+      purpose: 'Identify this particular mobile, this is what separates reverse-link users.',
       input: `${fmt(walshChipRate)} c/s.`,
       operation:
         `The ${CODES.longCodeRegisterStages}-stage long-code generator, masked with this mobile's ` +
         `${CODES.longCodeRegisterStages}-bit mask, runs at the full ` +
-        `${(RF.chipRateCps / 1e6).toFixed(4)} Mc/s — four times the Walsh-modulator output. The ` +
+        `${(RF.chipRateCps / 1e6).toFixed(4)} Mc/s, four times the Walsh-modulator output. The ` +
         'base station distinguishes mobiles by these long codes, not by Walsh index. Because the ' +
         'mobiles are asynchronous, the codes are only quasi-orthogonal on arrival.',
       output: `${(RF.chipRateCps / 1e6).toFixed(4)} Mc/s chip stream unique to this mobile.`,
@@ -414,7 +414,7 @@ export function reversePipeline(rateBps: TrafficRateBps): PipelineStage[] {
       operation:
         `Spread by the pilot PN sequences on I and Q, then offset-QPSK: the Q branch is delayed by ` +
         `half a chip, ${CODES.halfChipDelayNs} ns. Offsetting the branches means I and Q never ` +
-        'change at the same instant, so the phase never jumps 180° and the envelope varies less — ' +
+        'change at the same instant, so the phase never jumps 180° and the envelope varies less, ' +
         'the handset’s amplifier can run closer to saturation. The forward link, mains-powered, ' +
         'uses plain QPSK.',
       output: `OQPSK signal in a nominal ${RF.nominalChannelBandwidthMHz} MHz channel.`,
@@ -446,7 +446,7 @@ export function pipelineFor(link: LinkDirection, rateBps: TrafficRateBps): Pipel
 }
 
 /* ------------------------------------------------------------------ *
- * Link comparison — deck slide 11, verbatim rows.
+ * Link comparison, deck slide 11, verbatim rows.
  * ------------------------------------------------------------------ */
 
 export interface LinkComparisonRow {

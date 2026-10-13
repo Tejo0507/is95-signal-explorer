@@ -1,5 +1,5 @@
 /**
- * walsh.ts — the Walsh/Hadamard code family and correlation maths.
+ * walsh.ts, the Walsh/Hadamard code family and correlation maths.
  *
  * ALGORITHM
  * The order-N Hadamard matrix (N a power of two) obeys the Sylvester recursion
@@ -17,18 +17,18 @@
  *
  * which is what `walshChip` computes. Working from the closed form rather than
  * materialising a 64x64 matrix means any chip of any code is O(1), and the
- * row index is the natural Hadamard index — the same numbering the course deck
+ * row index is the natural Hadamard index, the same numbering the course deck
  * uses when it says "Walsh code n is channel n".
  *
  * Sanity check on that numbering: row 32 of H(64) has bit 5 set, so its sign
  * flips exactly when bit 5 of the column flips, i.e. +1 for the first 32 chips
  * and -1 for the last 32. That is the half-period square wave the deck assigns
- * to the synchronisation channel (W32), and row 0 is all +1 — the deck's
+ * to the synchronisation channel (W32), and row 0 is all +1, the deck's
  * "all zeros, always on" pilot. The construction therefore reproduces the
  * course reference's assignments rather than approximating them.
  *
  * CONVENTIONS
- *   binary form  : 0 / 1   (0 means +1, 1 means -1 — the usual mapping)
+ *   binary form  : 0 / 1   (0 means +1, 1 means -1, the usual mapping)
  *   bipolar form : +1 / -1 (what you multiply a signal by)
  */
 
@@ -84,7 +84,7 @@ export function innerProduct(a: number[], b: number[]): number {
   return sum;
 }
 
-/** Element-wise product — the chip-by-chip comparison row in the UI. */
+/** Element-wise product, the chip-by-chip comparison row in the UI. */
 export function elementwiseProduct(a: number[], b: number[]): number[] {
   const n = Math.min(a.length, b.length);
   const out = new Array<number>(n);
@@ -150,7 +150,7 @@ export function walshIndexFromSixBits(bits: number[]): number {
 }
 
 /* ------------------------------------------------------------------ *
- * Self-test helpers — used by the orthogonality demonstration so the page
+ * Self-test helpers, used by the orthogonality demonstration so the page
  * proves the property live instead of asserting it in prose.
  * ------------------------------------------------------------------ */
 
@@ -175,7 +175,7 @@ export function familyIsOrthogonal(order: number): boolean {
  * W2/W3) are the leaky ones, because a shift turns one into something
  * correlated with the other.
  *
- * The survey is computed once and cached, because it is O(N³) — about 8 million
+ * The survey is computed once and cached, because it is O(N³), about 8 million
  * multiply-accumulates at order 64, fine once but not on every render.
  */
 const surveyCache = new Map<number, { leaky: number; clean: number; total: number }>();

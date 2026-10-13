@@ -3,7 +3,7 @@
  *
  * Pick any two of the 64 IS-95 Walsh functions and compare them chip by chip.
  * Every number shown is computed from the Hadamard construction in lib/walsh.ts
- * — these are the actual order-64 Walsh functions, indexed the way the course
+ *, these are the actual order-64 Walsh functions, indexed the way the course
  * deck indexes them (W0 all zeros for the pilot, W32 the half-period square
  * wave for sync), not arbitrary sequences relabelled.
  *
@@ -101,10 +101,10 @@ export function WalshCodeExplorer() {
               Leaks when shifted
             </button>
             <button type="button" className="btn" onClick={() => { setA(0); setB(32); setShift(1); }}>
-              Pilot vs sync — robust
+              Pilot vs sync, robust
             </button>
             <button type="button" className="btn" onClick={() => { setA(19); setB(41); setShift(1); }}>
-              Two traffic — robust
+              Two traffic, robust
             </button>
             <ResetButton onReset={reset} />
           </div>
@@ -120,7 +120,7 @@ export function WalshCodeExplorer() {
             label: 'Inner product',
             value: dot > 0 ? `+${dot}` : String(dot),
             emphasis: true,
-            note: same ? 'Same code — full self-correlation' : shift === 0 ? 'Aligned, distinct codes' : `Misaligned by ${shift} Tc`,
+            note: same ? 'Same code, full self-correlation' : shift === 0 ? 'Aligned, distinct codes' : `Misaligned by ${shift} Tc`,
           },
           {
             label: 'Normalised',
@@ -129,7 +129,7 @@ export function WalshCodeExplorer() {
           },
           {
             label: 'Orthogonal?',
-            value: same ? 'n/a — same code' : dot === 0 ? 'Yes' : 'No',
+            value: same ? 'n/a, same code' : dot === 0 ? 'Yes' : 'No',
             emphasis: !same && dot !== 0,
             note: same
               ? undefined
@@ -145,7 +145,7 @@ export function WalshCodeExplorer() {
       <div className="stack stack--tight">
         <Figure
           label="Fig. 3.1a"
-          caption={<>W{a} as a chip waveform — {ORDER} chips, one Walsh symbol.</>}
+          caption={<>W{a} as a chip waveform, {ORDER} chips, one Walsh symbol.</>}
         >
           <Waveform samples={seqA} colour="var(--brick)" label={`W${a}`} showBitBoundaries={false} />
         </Figure>
@@ -184,8 +184,8 @@ export function WalshCodeExplorer() {
 
       <Legend
         entries={[
-          { colour: 'var(--brick)', label: `Code A — W${a}` },
-          { colour: 'var(--olive)', label: `Code B — W${b}` },
+          { colour: 'var(--brick)', label: `Code A, W${a}` },
+          { colour: 'var(--olive)', label: `Code B, W${b}` },
           { colour: 'var(--charcoal)', label: 'Product and running correlation' },
           { colour: 'var(--warm-grey)', label: 'Axes and zero line' },
         ]}
@@ -197,7 +197,7 @@ export function WalshCodeExplorer() {
         label="Fig. 3.2"
         caption={
           <>
-            First 32 chips, chip by chip. The bottom row is the running sum — watch where it
+            First 32 chips, chip by chip. The bottom row is the running sum, watch where it
             returns to zero (orthogonal) or walks away from it (not).
           </>
         }
@@ -216,13 +216,13 @@ export function WalshCodeExplorer() {
       {/* ---------------- sequence forms ---------------- */}
 
       <div className="split--even split">
-        <Panel title={`W${a} — sequence forms`}>
+        <Panel title={`W${a}, sequence forms`}>
           <p className="control__label" style={{ marginBottom: '0.3rem' }}>Binary (0 ↦ +1, 1 ↦ −1)</p>
           <pre className="seq">{toBinaryString(seqA)}</pre>
           <p className="control__label" style={{ margin: '0.75rem 0 0.3rem' }}>Bipolar</p>
           <pre className="seq seq--signs">{toSignString(seqA)}</pre>
         </Panel>
-        <Panel title={`W${b} — sequence forms`}>
+        <Panel title={`W${b}, sequence forms`}>
           <p className="control__label" style={{ marginBottom: '0.3rem' }}>Binary (0 ↦ +1, 1 ↦ −1)</p>
           <pre className="seq">{toBinaryString(seqBAligned)}</pre>
           <p className="control__label" style={{ margin: '0.75rem 0 0.3rem' }}>Bipolar</p>
@@ -237,7 +237,7 @@ export function WalshCodeExplorer() {
         caption={
           <>
             W{a} correlated against all {ORDER} Walsh functions, aligned. Every bar is zero except
-            the self-correlation at W{a} — the olive ticks on the axis are genuine zeros, drawn so
+            the self-correlation at W{a}, the olive ticks on the axis are genuine zeros, drawn so
             that "nothing here" is distinguishable from "not plotted". Click a bar to load it as
             code B.
           </>
@@ -259,7 +259,7 @@ export function WalshCodeExplorer() {
             ) : (
               <>
                 This particular pair happens to stay at zero for <strong>every</strong> shift. Not
-                all pairs do — the presets above load one of each kind.
+                all pairs do, the presets above load one of each kind.
               </>
             )}{' '}
             Click a stem to set the misalignment.
@@ -309,7 +309,7 @@ export function WalshCodeExplorer() {
         <ol className="small" style={{ marginBottom: 0 }}>
           <li>
             <strong>These sequences are orthogonal.</strong> True of any distinct pair of the
-            order-64 family, over one full period, perfectly aligned — Fig. 3.3 shows it for all 64
+            order-64 family, over one full period, perfectly aligned, Fig. 3.3 shows it for all 64
             at once.
           </li>
           <li>
@@ -318,7 +318,7 @@ export function WalshCodeExplorer() {
             <Term k="channelisation">channelisation</Term> genuinely separates the channels.
           </li>
           <li>
-            <strong>Misalignment can break it — and does so unevenly.</strong> {survey.leaky} of
+            <strong>Misalignment can break it, and does so unevenly.</strong> {survey.leaky} of
             the {survey.total} distinct pairs leak at some shift; the other {survey.clean} happen
             to stay at zero throughout. So "Walsh codes are orthogonal" is not a safe thing to
             lean on once alignment is lost, even though some pairs survive it. Reverse-link
@@ -331,7 +331,7 @@ export function WalshCodeExplorer() {
       <Why>
         Orthogonality is a property of codes <em>in alignment</em>, not an intrinsic property of
         the codes. Dragging the misalignment slider off zero is the whole of{' '}
-        <Term k="self-jamming">self-jamming</Term> in one gesture — and the fact that the result
+        <Term k="self-jamming">self-jamming</Term> in one gesture, and the fact that the result
         depends on <em>which</em> pair you picked is why a system cannot be designed to rely on
         getting lucky.
       </Why>

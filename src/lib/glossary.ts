@@ -1,5 +1,5 @@
 /**
- * glossary.ts — terminology shown in <Term> tooltips.
+ * glossary.ts, terminology shown in <Term> tooltips.
  *
  * Each entry answers one question in one or two sentences. Definitions follow
  * the course deck's usage; several exist specifically to separate terms that
@@ -16,7 +16,7 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   'licensed band': {
     term: 'Licensed frequency band',
     definition:
-      'The whole block of spectrum an operator is allowed to use — 824-849 MHz reverse and ' +
+      'The whole block of spectrum an operator is allowed to use, 824-849 MHz reverse and ' +
       '869-894 MHz forward, 25 MHz each. It holds many CDMA carriers; it is not one carrier.',
   },
   'centre frequency': {
@@ -28,19 +28,19 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   bandwidth: {
     term: 'Nominal channel bandwidth',
     definition:
-      '1.25 MHz — the width of spectrum one IS-95 carrier occupies, on each one-way link. A ' +
+      '1.25 MHz, the width of spectrum one IS-95 carrier occupies, on each one-way link. A ' +
       'width, measured in Hz.',
   },
   duplex: {
     term: 'Duplex frequency separation',
     definition:
-      '45 MHz — the fixed gap between a reverse channel and its paired forward channel, so a ' +
+      '45 MHz, the fixed gap between a reverse channel and its paired forward channel, so a ' +
       'handset can transmit and receive at the same time without deafening itself.',
   },
   'info rate': {
     term: 'Information bit rate',
     definition:
-      'The rate of the bits that actually carry meaning — 9600, 4800, 2400 or 1200 b/s out of the ' +
+      'The rate of the bits that actually carry meaning: 9600, 4800, 2400 or 1200 b/s out of the ' +
       'QCELP vocoder. Measured in bits per second.',
   },
   'chip rate': {
@@ -53,7 +53,7 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   'spreading factor': {
     term: 'Spreading factor',
     definition:
-      'Chip rate ÷ information rate — 128 for the 9.6 kb/s example. Equivalently Tb ÷ Tc: how ' +
+      'Chip rate ÷ information rate, 128 for the 9.6 kb/s example. Equivalently Tb ÷ Tc: how ' +
       'many chips one information bit is spread across.',
   },
   walsh: {
@@ -74,13 +74,13 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
     definition:
       'The reverse-link use of Walsh functions: six coded symbols choose WHICH of the 64 ' +
       'functions to send, so the index is the data. The receiver correlates against all 64 and ' +
-      'takes the biggest — no phase reference required.',
+      'takes the biggest, no phase reference required.',
   },
   orthogonal: {
     term: 'Orthogonal',
     definition:
       'Two sequences whose element-wise products sum to zero. Orthogonality is a property of ' +
-      'aligned sequences over equal durations — shift one and it generally disappears.',
+      'aligned sequences over equal durations, shift one and it generally disappears.',
   },
   'pn sequence': {
     term: 'PN sequence',
@@ -119,7 +119,7 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
     term: 'User mask',
     definition:
       'A bit pattern selecting which register stages are XORed to form the output. A different ' +
-      'mask gives the same sequence starting at a different phase — which is how every user gets ' +
+      'mask gives the same sequence starting at a different phase, which is how every user gets ' +
       'their own long code from one generator.',
   },
   correlation: {
@@ -131,14 +131,14 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   'processing gain': {
     term: 'Processing gain',
     definition:
-      'The spreading factor expressed in dB — 10·log₁₀(128) ≈ 21.1 dB. Roughly how much the ' +
+      'The spreading factor expressed in dB, 10·log₁₀(128) ≈ 21.1 dB. Roughly how much the ' +
       'despreading correlator favours the wanted signal over wideband interference.',
   },
   'self-jamming': {
     term: 'Self-jamming',
     definition:
       'A timing problem. Codes that cancel perfectly when aligned stop cancelling when one ' +
-      'arrives late — the deck’s 8-chip pair leaks 4 out of 8 at one chip of delay.',
+      'arrives late, the deck’s 8-chip pair leaks 4 out of 8 at one chip of delay.',
   },
   'near-far': {
     term: 'Near-far problem',

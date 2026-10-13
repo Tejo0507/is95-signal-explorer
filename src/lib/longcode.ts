@@ -1,5 +1,5 @@
 /**
- * longcode.ts — simplified model of a masked long-code generator.
+ * longcode.ts, simplified model of a masked long-code generator.
  *
  * WHAT THE COURSE REFERENCE ACTUALLY STATES
  *   · the long code comes from a 42-stage generator      (slides 13, 14)
@@ -10,7 +10,7 @@
  *   · on the reverse link it runs at 1.2288 Mc/s, four times the 307.2 kc/s
  *     Walsh-modulator output                             (slide 14)
  *
- * WHAT IT DOES NOT STATE — and what this module therefore does not claim
+ * WHAT IT DOES NOT STATE, and what this module therefore does not claim
  * The 42-stage polynomial, its tap positions and the initial register state are
  * not in the reference. This module runs the SAME ARCHITECTURE on a
  * register short enough to draw (4-14 stages) using primitive polynomials from
@@ -26,7 +26,7 @@
  * i.e. XOR of the stages the mask selects. The useful theorem: for any non-zero
  * mask, that output is the SAME m-sequence as the unmasked one, merely started
  * at a different phase. So every user's long code is one sequence seen at a
- * different offset — which is exactly why masks give per-user scrambling
+ * different offset, which is exactly why masks give per-user scrambling
  * without needing a different polynomial per user, and why those codes are only
  * quasi-orthogonal when they arrive unaligned.
  *
@@ -44,7 +44,7 @@ export interface LongCodeStep {
   state: number[];
   /** Stages selected by the mask, for highlighting. */
   selected: boolean[];
-  /** parity(state AND mask) — the generator output for this clock. */
+  /** parity(state AND mask), the generator output for this clock. */
   output: number;
   /** Bit fed back into stage 1. */
   feedback: number;
@@ -120,7 +120,7 @@ export function longCodeBipolar(
 /**
  * Find the phase offset between a masked output and the reference (mask =
  * stage 1 only) sequence, searching one full period. Returns null if no offset
- * matches — which, for a primitive polynomial and a non-zero mask, should never
+ * matches, which, for a primitive polynomial and a non-zero mask, should never
  * happen; the UI reports whichever answer it actually gets.
  */
 export function detectPhaseOffset(degree: number, seed: number[], mask: number[]): number | null {

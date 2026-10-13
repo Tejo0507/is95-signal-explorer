@@ -1,9 +1,9 @@
 /**
- * PageHead.tsx — the masthead block at the top of each module page.
+ * PageHead.tsx, the masthead block at the top of each module page.
  *
  * Asymmetric by design: the title takes the wide column, and the standing
  * commentary ("what this module is for") sits in a narrower measure beside it,
- * separated by a hairline rule — a journal section opener rather than a
+ * separated by a hairline rule, a journal section opener rather than a
  * centred hero.
  */
 
@@ -15,7 +15,7 @@ export function PageHead({ route, children }: { route: Route; children: ReactNod
     <header className="page__head">
       <div>
         <p className="eyebrow eyebrow--brick">
-          {route.num} — {route.nav}
+          {route.num} · {route.nav}
         </p>
         <h1>{route.title}</h1>
       </div>

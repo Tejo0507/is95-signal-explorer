@@ -1,5 +1,5 @@
 /**
- * theme.ts — the colour constants and the site-wide legend.
+ * theme.ts, the colour constants and the site-wide legend.
  *
  * These live apart from the components that use them so every component file
  * exports components only, which is what React Fast Refresh needs in order to

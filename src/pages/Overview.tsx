@@ -1,5 +1,5 @@
 /**
- * Overview.tsx — the front page and table of contents.
+ * Overview.tsx, the front page and table of contents.
  *
  * Also the one place where every disclosed simplification on the site is
  * collected, so a reader (or an examiner) can see the whole list without
@@ -35,7 +35,7 @@ export function Overview({ onNavigate }: { onNavigate: (r: Route) => void }) {
           </h1>
           <p className="lede">
             An interactive laboratory for CDMA radio specifications, spreading codes, logical
-            channels and physical channel allocation — built from the Unit-4 course reference and
+            channels and physical channel allocation, built from the Unit-4 course reference and
             computed live rather than illustrated.
           </p>
           <div className="hero__meta">
@@ -143,7 +143,7 @@ export function Overview({ onNavigate }: { onNavigate: (r: Route) => void }) {
             <Panel title="What is computed">
               <ul className="small" style={{ marginBottom: 0 }}>
                 <li>
-                  The order-64 <Term k="walsh">Walsh functions</Term>, from the Hadamard recursion —
+                  The order-64 <Term k="walsh">Walsh functions</Term>, from the Hadamard recursion,
                   every correlation figure on the site is their actual inner product, including the
                   live check that all 2 016 distinct pairs are orthogonal.
                 </li>
@@ -234,7 +234,7 @@ function ThreeUsersFigure() {
       caption={
         <>
           Three spread transmissions on one carrier arrive as a single sum. The bottom trace is the
-          actual sum of the three traces above it — the receiver gets only this, and recovers one
+          actual sum of the three traces above it, the receiver gets only this, and recovers one
           user by correlating for that user’s code.
         </>
       }
@@ -277,10 +277,10 @@ function ThreeUsersFigure() {
           r(t) = s₁(t) + s₂(t) + s₃(t) + n(t)
         </text>
         <text x={8} y={H - 24} fontSize={8} fontFamily="monospace" fill={GREY}>
-          No filter splits them — they share the band.
+          No filter splits them, they share the band.
         </text>
         <text x={8} y={H - 12} fontSize={8} fontFamily="monospace" fill={GREY}>
-          No time gate splits them — they overlap in time.
+          No time gate splits them, they overlap in time.
         </text>
         <text x={padL + plotW} y={H - 12} fontSize={8} fontFamily="monospace" fill={GREY} textAnchor="end">
           {LEN} chips →

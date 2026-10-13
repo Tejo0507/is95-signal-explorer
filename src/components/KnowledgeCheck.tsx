@@ -1,5 +1,5 @@
 /**
- * KnowledgeCheck.tsx — end-of-module quiz.
+ * KnowledgeCheck.tsx, end-of-module quiz.
  *
  * Answers are revealed one question at a time and stay revealed, with the
  * explanation shown whether the reader was right or wrong (being right for the

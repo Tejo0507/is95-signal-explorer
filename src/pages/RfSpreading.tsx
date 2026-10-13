@@ -1,10 +1,10 @@
 /**
- * RfSpreading.tsx — module 01.
+ * RfSpreading.tsx, module 01.
  *
  * Three experiments: the band/channel explorer, the spreading-rate calculator,
  * and the step-controlled spread-and-recover demonstration. The vocabulary
  * table between them exists because almost every mistake students make in this
- * material is a units mistake — a width confused with a rate, or an allocation
+ * material is a units mistake, a width confused with a rate, or an allocation
  * confused with a carrier.
  */
 
@@ -75,7 +75,7 @@ export function RfSpreading() {
       <PageHead route={routeById('rf')}>
         <p>
           Two 25 MHz bands, one per direction, paired channel by channel 45 MHz apart. Inside each
-          band, a carrier occupies a nominal 1.25 MHz and carries a chip stream at 1.2288 Mchip/s —
+          band, a carrier occupies a nominal 1.25 MHz and carries a chip stream at 1.2288 Mchip/s,
           a rate, not a width.
         </p>
         <p style={{ marginBottom: 0 }}>

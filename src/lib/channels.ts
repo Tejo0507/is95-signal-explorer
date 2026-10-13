@@ -1,5 +1,5 @@
 /**
- * channels.ts — IS-95 logical channel definitions and forward-link Walsh
+ * channels.ts, IS-95 logical channel definitions and forward-link Walsh
  * allocation, exactly as numbered in the course deck (slides 12 and 14).
  *
  * The deck's reference layout is: pilot W0, sync W32, paging W1-W7, traffic
@@ -25,7 +25,7 @@ export interface ForwardChannelType {
   purpose: string;
   /** The fuller explanation shown in the detail panel. */
   detail: string;
-  /** Why a student should care — kept to one sentence. */
+  /** Why a student should care, kept to one sentence. */
   whyItMatters: string;
 }
 
@@ -42,7 +42,7 @@ export const FORWARD_CHANNEL_TYPES: ForwardChannelType[] = [
       'coherent demodulation of every other forward channel. Comparing pilot strengths from ' +
       'neighbouring cells is also how the network decides when to hand off.',
     whyItMatters:
-      'Everything else on the forward link is demodulated against the pilot — lose it and no ' +
+      'Everything else on the forward link is demodulated against the pilot, lose it and no ' +
       'other channel can be read.',
   },
   {
@@ -66,13 +66,13 @@ export const FORWARD_CHANNEL_TYPES: ForwardChannelType[] = [
     rateLabel: `${PAGING_RATES_BPS.map((r) => r.toLocaleString('en-US')).join(' / ')} b/s`,
     purpose: 'Control information and paging messages.',
     detail:
-      'Carries control information and paging messages for one or more mobile stations — ' +
+      'Carries control information and paging messages for one or more mobile stations, ' +
       'incoming-call notifications, channel assignments and system parameter messages. An ' +
       'operator configures how many of W1-W7 are actually used; whatever is left over becomes ' +
       'traffic capacity.',
     whyItMatters:
       'Every paging channel an operator turns on is one fewer Walsh code available to carry a ' +
-      'call — control capacity is bought directly out of traffic capacity.',
+      'call, control capacity is bought directly out of traffic capacity.',
   },
   {
     kind: 'traffic',
@@ -86,7 +86,7 @@ export const FORWARD_CHANNEL_TYPES: ForwardChannelType[] = [
       'carries the power-control subchannel: one bit every 1.25 ms telling that mobile to raise ' +
       'or lower its transmit power by 1 dB.',
     whyItMatters:
-      'This is the channel a call actually occupies — and the one whose power-control bits keep ' +
+      'This is the channel a call actually occupies, and the one whose power-control bits keep ' +
       'the reverse link alive.',
   },
 ];
@@ -108,13 +108,13 @@ export const REVERSE_CHANNEL_TYPES: ReverseChannelType[] = [
     purpose: 'Registration, call set-up and responses to paging.',
     detail:
       'The mobile’s way of speaking to a base station before it has a traffic channel: ' +
-      'registration, call origination, and answering a page. Fixed at 4800 b/s — there is no ' +
+      'registration, call origination, and answering a page. Fixed at 4800 b/s, there is no ' +
       'variable-rate vocoder involved. The deck notes up to 32 access channels per paging ' +
       'channel. Because a mobile transmits here without being power-controlled yet, access is ' +
       'the one moment the reverse link has to tolerate uncontrolled arrival power.',
     whyItMatters:
       'A handset cannot be assigned a traffic channel until it has successfully used the access ' +
-      'channel — this is where every call begins.',
+      'channel, this is where every call begins.',
   },
   {
     kind: 'reverse-traffic',
@@ -124,7 +124,7 @@ export const REVERSE_CHANNEL_TYPES: ReverseChannelType[] = [
     detail:
       'Carries the user’s voice or data back to the base station. Every mobile runs the same ' +
       'processing chain but with its own long code, and the base station tells each one apart by ' +
-      'that long code — not by a Walsh index. Rate 1/3 convolutional coding and 64-ary Walsh ' +
+      'that long code, not by a Walsh index. Rate 1/3 convolutional coding and 64-ary Walsh ' +
       'modulation replace the forward link’s rate 1/2 coding and Walsh channelisation.',
     whyItMatters:
       'This is where the near-far problem bites: the long codes are only quasi-orthogonal when ' +
@@ -174,7 +174,7 @@ export function allocationCounts(pagingChannels: number): Record<ForwardChannelK
   return counts;
 }
 
-/** The deck's reference layout — seven paging channels, 55 traffic channels. */
+/** The deck's reference layout, seven paging channels, 55 traffic channels. */
 export const REFERENCE_PAGING_CHANNELS = 7;
 
 export const KIND_LABEL: Record<ForwardChannelKind, string> = {
@@ -200,11 +200,11 @@ export const WALSH_ROLE_CONTRAST = {
     heading: 'Reverse link: Walsh functions modulate',
     body:
       'Many transmitters, each with its own path and clock. Here six coded symbols select one of ' +
-      '64 Walsh functions — the Walsh function is the symbol being sent, not a channel number. ' +
+      '64 Walsh functions, the Walsh function is the symbol being sent, not a channel number. ' +
       'Mobiles are told apart by their long codes, which are only quasi-orthogonal on arrival.',
   },
   warning:
     'Choosing a Walsh function does not by itself separate asynchronous reverse-link users. ' +
-    'Orthogonality is a property of aligned codes, and reverse-link arrivals are not aligned — ' +
+    'Orthogonality is a property of aligned codes, and reverse-link arrivals are not aligned, ' +
     'which is why IS-95 makes closed-loop power control mandatory rather than optional.',
 } as const;

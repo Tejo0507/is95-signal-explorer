@@ -1,10 +1,10 @@
 /**
- * SignalTrace.tsx — the guided end-to-end experiment.
+ * SignalTrace.tsx, the guided end-to-end experiment.
  *
  * Choose a direction, an information rate and a code configuration; the site
  * then traces one signal through all seven stages, from band allocation to
- * receiver decision. Switching direction rebuilds the whole path — not just the
- * labels — because the stage text in lib/trace.ts is genuinely different for
+ * receiver decision. Switching direction rebuilds the whole path, not just the
+ * labels, because the stage text in lib/trace.ts is genuinely different for
  * each link.
  *
  * The comparison table at the foot separates what changes between the links
@@ -33,7 +33,7 @@ export function SignalTrace() {
   const comparison = useMemo(() => traceComparison(cfg.rate), [cfg.rate]);
 
   // Only traffic channels make sense as a trace target, so the selector below
-  // offers traffic indices only — no correction pass is needed after the fact.
+  // offers traffic indices only, no correction pass is needed after the fact.
   const allocation = useMemo(() => forwardAllocation(7), []);
 
   const stage = stages[selected];
@@ -120,7 +120,7 @@ export function SignalTrace() {
             label: 'Carrier',
             value: (cfg.link === 'forward' ? cfg.forwardCentreMHz : cfg.forwardCentreMHz - RF.duplexSeparationMHz).toFixed(2),
             unit: 'MHz',
-            note: cfg.link === 'forward' ? 'Forward band' : `Reverse band — ${RF.duplexSeparationMHz} MHz below its pair`,
+            note: cfg.link === 'forward' ? 'Forward band' : `Reverse band, ${RF.duplexSeparationMHz} MHz below its pair`,
           },
           { label: 'Chip rate', value: '1.2288', unit: 'Mc/s', note: 'Same on both links' },
         ]}
@@ -175,7 +175,7 @@ export function SignalTrace() {
             </p>
             {stage.shared ? (
               <p className="small" style={{ margin: 0, color: 'var(--olive)' }}>
-                This stage is identical in both directions — switch the link and nothing here
+                This stage is identical in both directions, switch the link and nothing here
                 changes.
               </p>
             ) : null}
@@ -207,7 +207,7 @@ export function SignalTrace() {
         caption={
           <>
             Properties of the two links at the currently selected {cfg.rate.toLocaleString('en-US')}{' '}
-            b/s. Olive rows are shared; the rest change with direction. Eleven of sixteen change —
+            b/s. Olive rows are shared; the rest change with direction. Eleven of sixteen change,
             which is why forcing the two chains into one diagram would misrepresent the system.
           </>
         }
@@ -257,7 +257,7 @@ export function SignalTrace() {
       />
 
       <Why>
-        The two links share a band plan, a bandwidth and a chip rate — and almost nothing else. The
+        The two links share a band plan, a bandwidth and a chip rate, and almost nothing else. The
         asymmetry is not arbitrary: one end is a single mains-powered transmitter with one clock,
         the other is a crowd of battery-powered transmitters with their own clocks and their own
         path losses. Every difference in the table traces back to that one fact.
@@ -266,7 +266,7 @@ export function SignalTrace() {
       <Disclosure>
         This trace reports specifications and stage descriptions; it does not simulate a radio link.
         There is no channel model, no fading, no noise, no measured bit-error rate, and no running
-        modem anywhere on this site — those would be fabricated results, since the course reference
+        modem anywhere on this site, those would be fabricated results, since the course reference
         supplies none. What it does guarantee is internal consistency: every figure here is read
         from the same source-of-truth module as the four earlier modules.
       </Disclosure>
